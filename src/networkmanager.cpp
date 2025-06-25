@@ -261,6 +261,8 @@ void NetworkManager::processMessage(const QByteArray &data)
                     client->write(rebroadcastMsg);
                 }
             }
+            // Also send the full game state to all clients if available
+            // (Assume the server's game logic will call sendGameState after applying the move)
         }
         break;
     case GameState:

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GameWindow_t {
-    QByteArrayData data[8];
-    char stringdata0[78];
+    QByteArrayData data[10];
+    char stringdata0[111];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,12 +39,15 @@ QT_MOC_LITERAL(3, 21, 8), // "fromHand"
 QT_MOC_LITERAL(4, 30, 6), // "toHand"
 QT_MOC_LITERAL(5, 37, 9), // "onAISplit"
 QT_MOC_LITERAL(6, 47, 21), // "onNetworkMoveReceived"
-QT_MOC_LITERAL(7, 69, 8) // "playerId"
+QT_MOC_LITERAL(7, 69, 8), // "playerId"
+QT_MOC_LITERAL(8, 78, 26), // "onNetworkGameStateReceived"
+QT_MOC_LITERAL(9, 105, 5) // "state"
 
     },
     "GameWindow\0onAIMove\0\0fromHand\0toHand\0"
     "onAISplit\0onNetworkMoveReceived\0"
-    "playerId"
+    "playerId\0onNetworkGameStateReceived\0"
+    "state"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +57,7 @@ static const uint qt_meta_data_GameWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,14 +65,16 @@ static const uint qt_meta_data_GameWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   29,    2, 0x08 /* Private */,
-       5,    0,   34,    2, 0x08 /* Private */,
-       6,    3,   35,    2, 0x08 /* Private */,
+       1,    2,   34,    2, 0x08 /* Private */,
+       5,    0,   39,    2, 0x08 /* Private */,
+       6,    3,   40,    2, 0x08 /* Private */,
+       8,    1,   47,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    7,
+    QMetaType::Void, QMetaType::QJsonObject,    9,
 
        0        // eod
 };
@@ -83,6 +88,7 @@ void GameWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->onAIMove((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 1: _t->onAISplit(); break;
         case 2: _t->onNetworkMoveReceived((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 3: _t->onNetworkGameStateReceived((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -117,13 +123,13 @@ int GameWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

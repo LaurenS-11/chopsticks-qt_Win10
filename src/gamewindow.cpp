@@ -363,8 +363,9 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
     // --- NETWORK MULTIPLAYER ---
     if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
         m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
+        m_networkManager->sendGameState(toJson());
         m_isMyTurn = false;
-        // Do NOT update state or GUI here in network mode; wait for onNetworkMoveReceived
+        // Do NOT update state or GUI here in network mode; wait for onNetworkGameStateReceived
         return;
     }
     // --- END NETWORK ---
@@ -477,6 +478,7 @@ void GameWindow::setupGameMode()
             if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ServerMode);
             connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
+            connect(m_networkManager, &NetworkManager::gameStateReceived, this, &GameWindow::onNetworkGameStateReceived);
             break;
         case NetworkDialog::NetworkClient:
             m_localPlayerId = 2;
@@ -485,6 +487,7 @@ void GameWindow::setupGameMode()
             if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ClientMode);
             connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
+            connect(m_networkManager, &NetworkManager::gameStateReceived, this, &GameWindow::onNetworkGameStateReceived);
             break;
     }
 }
@@ -648,6 +651,35 @@ void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
     checkWin();
 }
 
+void GameWindow::onNetworkGameStateReceived(const QJsonObject& state) {
+    fromJson(state);
+}
+
 void GameWindow::setNetworkManager(NetworkManager* networkManager) {
     m_networkManager = networkManager;
+}
+
+QJsonObject GameWindow::toJson() const {
+    QJsonObject obj;
+    obj["p1_left"] = player1->getLeftHand();
+    obj["p1_right"] = player1->getRightHand();
+    obj["p2_left"] = player2->getLeftHand();
+    obj["p2_right"] = player2->getRightHand();
+    obj["currentPlayer"] = (currentPlayer == player1) ? 1 : 2;
+    obj["selectedMyHand"] = selectedMyHand;
+    obj["isMyTurn"] = m_isMyTurn;
+    return obj;
+}
+
+void GameWindow::fromJson(const QJsonObject& obj) {
+    player1->setHand(0, obj["p1_left"].toInt());
+    player1->setHand(1, obj["p1_right"].toInt());
+    player2->setHand(0, obj["p2_left"].toInt());
+    player2->setHand(1, obj["p2_right"].toInt());
+    int cp = obj["currentPlayer"].toInt();
+    currentPlayer = (cp == 1) ? player1 : player2;
+    selectedMyHand = obj["selectedMyHand"].toInt();
+    m_isMyTurn = obj["isMyTurn"].toBool();
+    updateDisplay();
+    checkWin();
 }

@@ -21,6 +21,9 @@ public:
     // Allow setting network manager after construction
     void setNetworkManager(NetworkManager* networkManager);
 
+    QJsonObject toJson() const;
+    void fromJson(const QJsonObject& obj);
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
     void changeEvent(QEvent* event) override;
@@ -64,6 +67,7 @@ private slots:
     void onAISplit();
     // Network multiplayer: handle move received from network
     void onNetworkMoveReceived(int fromHand, int toHand, int playerId);
+    void onNetworkGameStateReceived(const QJsonObject& state);
 };
 
 #endif // GAMEWINDOW_H
