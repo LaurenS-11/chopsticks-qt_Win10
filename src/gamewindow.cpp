@@ -491,34 +491,32 @@ void GameWindow::setupGameMode()
         m_networkManager = nullptr;
     }
 
-    // Setup based on game type
     switch (m_gameType) {
         case NetworkDialog::LocalTwoPlayer:
-            // Default mode - no additional setup needed
+            m_localPlayerId = 1;
+            m_isMyTurn = true;
             break;
-            
         case NetworkDialog::SinglePlayerVsAI:
-            // Create AI player
+            m_localPlayerId = 1;
+            m_isMyTurn = true;
             m_aiPlayer = new AIPlayer(this);
             m_aiPlayer->setDifficulty(static_cast<AIPlayer::Difficulty>(m_aiDifficulty));
-            
-            // Connect AI signals to game logic
             connect(m_aiPlayer, &AIPlayer::moveDecided, this, &GameWindow::onAIMove);
             connect(m_aiPlayer, &AIPlayer::splitDecided, this, &GameWindow::onAISplit);
             break;
-            
         case NetworkDialog::NetworkServer:
-            // Create network manager in server mode
+            m_localPlayerId = 1;
+            m_isMyTurn = true;
             m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ServerMode);
-            // TODO: Setup server functionality
+            connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             break;
-            
         case NetworkDialog::NetworkClient:
-            // Create network manager in client mode
+            m_localPlayerId = 2;
+            m_isMyTurn = false;
             m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ClientMode);
-            // TODO: Setup client functionality
+            connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             break;
     }
 }
@@ -631,4 +629,30 @@ void GameWindow::triggerAIMove()
         // Ask AI to make a move
         m_aiPlayer->makeMove(*player2, *player1);
     }
+}
+
+void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
+{
+    // Only apply move if it's not our turn
+    if (playerId == m_localPlayerId) return;
+    Player* myPlayer = (m_localPlayerId == 1) ? player1 : player2;
+    Player* opponent = (m_localPlayerId == 1) ? player2 : player1;
+    Player* current = (playerId == 1) ? player1 : player2;
+    Player* opp = (playerId == 1) ? player2 : player1;
+    currentPlayer = current;
+    selectedMyHand = fromHand;
+    // Simulate the move as if the remote player made it
+    if ((current == player1 && fromHand < 2 && toHand < 2 && toHand == fromHand) ||
+        (current == player2 && fromHand < 2 && toHand < 2 && toHand == fromHand)) {
+        // Split or revive
+        selectOpponentHand(toHand, playerId == 1);
+    } else {
+        // Normal tap
+        current->tap(*opp, fromHand, toHand);
+        currentPlayer = opp;
+        selectedMyHand = -1;
+        updateDisplay();
+        checkWin();
+    }
+    m_isMyTurn = true;
 }

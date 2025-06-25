@@ -44,6 +44,10 @@ private:
     AIPlayer* m_aiPlayer;
     NetworkManager* m_networkManager;
 
+    // Multiplayer turn management
+    int m_localPlayerId = 1; // 1 for server, 2 for client
+    bool m_isMyTurn = true;
+
     void selectMyHand(int handIndex);
     void selectOpponentHand(int handIndex, bool isPlayer1Hand);
     void checkWin();
@@ -56,6 +60,8 @@ private:
 private slots:
     void onAIMove(int fromHand, int toHand);
     void onAISplit();
+    // Network multiplayer: handle move received from network
+    void onNetworkMoveReceived(int fromHand, int toHand, int playerId);
 };
 
 #endif // GAMEWINDOW_H
