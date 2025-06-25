@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Modern gradient background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <!-- Chopstick gradient -->
+    <linearGradient id="wood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#DEB887"/>
+      <stop offset="50%" style="stop-color:#CD853F"/>
+      <stop offset="100%" style="stop-color:#8B4513"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background -->
+  <rect x="16" y="16" width="224" height="224" rx="45" fill="url(#bg)"/>
+  
+  <!-- Simplified chopsticks crossing - positioned lower -->
+  <g transform="translate(128 140)">
+    <!-- Chopstick 1 -->
+    <rect x="-4" y="-70" width="8" height="140" rx="4" fill="url(#wood)" transform="rotate(-15)"/>
+    <circle cx="0" cy="-66" r="5" fill="#F5DEB3" transform="rotate(-15)"/>
+    
+    <!-- Chopstick 2 -->  
+    <rect x="-4" y="-70" width="8" height="140" rx="4" fill="url(#wood)" transform="rotate(15)"/>
+    <circle cx="0" cy="-66" r="5" fill="#F5DEB3" transform="rotate(15)"/>
+  </g>
+  
+  
+  <!-- App title -->
+  <text x="128" y="50" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white" opacity="0.9">Chopsticks</text>
+</svg>
+</svg>

@@ -17,6 +17,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/CPack.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/CPackComponent.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake"
@@ -40,6 +42,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in"
   "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5Config.cmake"
   "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake"
   "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake"
@@ -79,6 +82,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeSystem.cmake"
+  "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/app.rc.in"
   )
 
 # The corresponding makefile is:
@@ -89,6 +93,9 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "app.rc"
+  "CPackConfig.cmake"
+  "CPackSourceConfig.cmake"
   "CMakeFiles/chopsticks-qt_autogen.dir/AutogenInfo.json"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )

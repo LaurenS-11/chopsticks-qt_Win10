@@ -1,0 +1,37 @@
+// Windows Resource File for Chopsticks Qt Game
+// This embeds the icon into the executable
+
+#include <windows.h>
+
+// Application icon
+IDI_ICON1 ICON "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/chopsticks-icon.ico"
+
+// Version information
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0x0L
+FILEOS 0x40004L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "Chopsticks Qt Developer"
+            VALUE "FileDescription", "Chopsticks Qt Game"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "chopsticks-qt"
+            VALUE "LegalCopyright", "Copyright (C) 2025"
+            VALUE "OriginalFilename", "chopsticks-qt.exe"
+            VALUE "ProductName", "Chopsticks Qt Game"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

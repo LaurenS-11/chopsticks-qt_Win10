@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/chopsticks-qt_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/chopsticks-qt_autogen.dir/ParseCache.txt"
   "chopsticks-qt_autogen"
+  "CMakeFiles/chopsticks-qt.dir/app.rc.obj"
   "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj"
@@ -19,6 +20,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang CXX RC)
   include(CMakeFiles/chopsticks-qt.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

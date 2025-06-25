@@ -86,7 +86,12 @@
 		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake",
 		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
 		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
-		"C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeParseArguments.cmake"
+		"C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeParseArguments.cmake",
+		"C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/app.rc.in",
+		"C:/Program Files/CMake/share/cmake-4.0/Modules/CPack.cmake",
+		"C:/Program Files/CMake/share/cmake-4.0/Modules/CPackComponent.cmake",
+		"C:/Program Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in",
+		"C:/Program Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10",
 	"CROSS_CONFIG" : false,

@@ -12,6 +12,8 @@ chopsticks-qt_autogen/timestamp: C:/Program\ Files/CMake/bin/cmake.exe \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake \
+  C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPack.cmake \
+  C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPackComponent.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake \
@@ -35,6 +37,7 @@ chopsticks-qt_autogen/timestamp: C:/Program\ Files/CMake/bin/cmake.exe \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake \
   C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake \
+  C:/Program\ Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h \
@@ -167,6 +170,7 @@ chopsticks-qt_autogen/timestamp: C:/Program\ Files/CMake/bin/cmake.exe \
   CMakeFiles/4.0.2/CMakeRCCompiler.cmake \
   CMakeFiles/4.0.2/CMakeSystem.cmake \
   chopsticks-qt_autogen/moc_predefs.h \
+  C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/app.rc.in \
   C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp \
   C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp \
   C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h \
@@ -438,6 +442,16 @@ C:/Program\ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake:
 
 C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake:
 
+C:/msys64/mingw64/include/c++/14.2.0/bits/allocated_ptr.h:
+
+C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPack.cmake:
+
+C:/msys64/mingw64/include/c++/14.2.0/stdlib.h:
+
+C:/msys64/mingw64/include/c++/14.2.0/bits/atomic_base.h:
+
+C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPackComponent.cmake:
+
 C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake:
 
 C:/msys64/mingw64/include/c++/14.2.0/concepts:
@@ -514,6 +528,18 @@ C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmak
 
 C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake:
 
+C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
+
+C:/msys64/mingw64/include/c++/14.2.0/bits/stl_raw_storage_iter.h:
+
+C:/Program\ Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in:
+
+C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h:
+
+C:/msys64/mingw64/include/c++/14.2.0/bits/ostream.tcc:
+
+C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h:
+
 C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtabwidget.h:
 
 C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h:
@@ -521,16 +547,6 @@ C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h:
 C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h:
 
 C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h:
-
-C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
-
-C:/msys64/mingw64/include/c++/14.2.0/bits/stl_raw_storage_iter.h:
-
-C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h:
-
-C:/msys64/mingw64/include/c++/14.2.0/bits/ostream.tcc:
-
-C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h:
 
 C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/ctype_inline.h:
 
@@ -810,6 +826,8 @@ C:/msys64/mingw64/include/c++/14.2.0/bits/std_mutex.h:
 
 chopsticks-qt_autogen/moc_predefs.h:
 
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/app.rc.in:
+
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp:
 
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h:
@@ -848,13 +866,7 @@ C:/msys64/mingw64/include/c++/14.2.0/bits/align.h:
 
 C:/msys64/mingw64/include/c++/14.2.0/bits/alloc_traits.h:
 
-C:/msys64/mingw64/include/c++/14.2.0/bits/allocated_ptr.h:
-
 C:/msys64/mingw64/include/c++/14.2.0/bits/allocator.h:
-
-C:/msys64/mingw64/include/c++/14.2.0/stdlib.h:
-
-C:/msys64/mingw64/include/c++/14.2.0/bits/atomic_base.h:
 
 C:/msys64/mingw64/include/c++/14.2.0/bits/atomic_lockfree_defines.h:
 

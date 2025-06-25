@@ -139,12 +139,18 @@ CMakeFiles/chopsticks-qt.dir/src/player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chopsticks-qt.dir/src/player.cpp.s"
 	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.cpp -o CMakeFiles/chopsticks-qt.dir/src/player.cpp.s
 
+CMakeFiles/chopsticks-qt.dir/app.rc.obj: CMakeFiles/chopsticks-qt.dir/flags.make
+CMakeFiles/chopsticks-qt.dir/app.rc.obj: app.rc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building RC object CMakeFiles/chopsticks-qt.dir/app.rc.obj"
+	C:/msys64/mingw64/bin/windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/app.rc CMakeFiles/chopsticks-qt.dir/app.rc.obj
+
 # Object files for target chopsticks-qt
 chopsticks__qt_OBJECTS = \
 "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj" \
 "CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj" \
-"CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj"
+"CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj" \
+"CMakeFiles/chopsticks-qt.dir/app.rc.obj"
 
 # External object files for target chopsticks-qt
 chopsticks__qt_EXTERNAL_OBJECTS =
@@ -153,13 +159,14 @@ chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compi
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj
+chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/app.rc.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/build.make
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/linkLibs.rsp
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable chopsticks-qt.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable chopsticks-qt.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/chopsticks-qt.dir/objects.a
 	C:/msys64/mingw64/bin/ar.exe qc CMakeFiles/chopsticks-qt.dir/objects.a @CMakeFiles/chopsticks-qt.dir/objects1.rsp
 	C:/msys64/mingw64/bin/c++.exe -g -Wl,--whole-archive CMakeFiles/chopsticks-qt.dir/objects.a -Wl,--no-whole-archive -o chopsticks-qt.exe -Wl,--out-implib,libchopsticks-qt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/chopsticks-qt.dir/linkLibs.rsp

@@ -9,6 +9,8 @@ chopsticks-qt_autogen/timestamp: \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake \
+	C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPack.cmake \
+	C:/Program\ Files/CMake/share/cmake-4.0/Modules/CPackComponent.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake \
@@ -32,6 +34,7 @@ chopsticks-qt_autogen/timestamp: \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake \
+	C:/Program\ Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in \
 	C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h \
 	C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h \
 	C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h \
@@ -164,6 +167,7 @@ chopsticks-qt_autogen/timestamp: \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/4.0.2/CMakeRCCompiler.cmake \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/4.0.2/CMakeSystem.cmake \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/moc_predefs.h \
+	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/resources/app.rc.in \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp \
 	C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h \

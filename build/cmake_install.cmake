@@ -37,6 +37,31 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "C:/msys64/mingw64/bin/objdump.exe")
 endif()
 
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt.exe")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./chopsticks-qt.exe" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./chopsticks-qt.exe")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "C:/msys64/mingw64/bin/strip.exe" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./chopsticks-qt.exe")
+    endif()
+  endif()
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES
+    "C:/Qt/5.15.2/mingw81_64/bin/Qt5Core.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/Qt5Gui.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/Qt5Widgets.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/libgcc_s_seh-1.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/libstdc++-6.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/libwinpthread-1.dll"
+    )
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/platforms" TYPE FILE FILES "C:/Qt/5.15.2/mingw81_64/plugins/platforms/qwindows.dll")
+endif()
+
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)

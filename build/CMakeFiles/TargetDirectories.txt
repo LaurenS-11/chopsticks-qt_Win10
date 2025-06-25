@@ -1,5 +1,11 @@
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/package.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/package_source.dir
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/edit_cache.dir
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/list_install_components.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/install.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/install/local.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/install/strip.dir
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir

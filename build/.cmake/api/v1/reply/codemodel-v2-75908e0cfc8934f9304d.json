@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-a99572c6c1428b8a4e54.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "chopsticks-qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "chopsticks-qt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chopsticks-qt-Debug-d196198dd5ba55bfc430.json",
+					"name" : "chopsticks-qt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chopsticks-qt_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chopsticks-qt_autogen-Debug-f06875dee3793a1e1509.json",
+					"name" : "chopsticks-qt_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chopsticks-qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chopsticks-qt_autogen_timestamp_deps-Debug-2a0adda29102e19d694c.json",
+					"name" : "chopsticks-qt_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build",
+		"source" : "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
