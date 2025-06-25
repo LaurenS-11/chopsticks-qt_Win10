@@ -1,0 +1,5 @@
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/edit_cache.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir

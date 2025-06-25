@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build",
+  "command": "C:/msys64/mingw64/bin/c++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/mocs_compilation.cpp",
+  "file": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build",
+  "command": "C:/msys64/mingw64/bin/c++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp",
+  "file": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp",
+  "output": "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj"
+},
+{
+  "directory": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build",
+  "command": "C:/msys64/mingw64/bin/c++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp",
+  "file": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp",
+  "output": "CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj"
+},
+{
+  "directory": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build",
+  "command": "C:/msys64/mingw64/bin/c++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.cpp",
+  "file": "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.cpp",
+  "output": "CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj"
+}
+]
