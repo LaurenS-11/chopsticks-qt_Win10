@@ -81,6 +81,7 @@ private:
     QTcpSocket *m_clientSocket;  // For client mode
     QList<QTcpSocket*> m_clients; // For server mode
     quint16 m_serverPort;
+    QByteArray m_incomingBuffer; // Buffer for newline-delimited JSON messages
 };
 
 #endif // NETWORKMANAGER_H

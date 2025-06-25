@@ -281,4 +281,8 @@ CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj: \
  C:/Qt/5.15.2/mingw81_64/include/QtCore/QDataStream \
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatastream.h \
  C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h
+ C:/Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
+ C:/Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
+ C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
+ C:/Qt/5.15.2/mingw81_64/include/QtCore/QBuffer \
+ C:/Qt/5.15.2/mingw81_64/include/QtCore/qbuffer.h

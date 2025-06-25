@@ -5,6 +5,8 @@
 #include <QJsonDocument>
 #include <QDataStream>
 #include <QDebug>
+#include <QByteArray>
+#include <QBuffer>
 
 NetworkManager::NetworkManager(QObject *parent)
     : QObject(parent)
@@ -145,7 +147,7 @@ void NetworkManager::sendGameState(const QJsonObject &gameState)
 
 void NetworkManager::sendMessage(MessageType type, const QJsonObject &data)
 {
-    QByteArray message = createMessage(type, data);
+    QByteArray message = createMessage(type, data) + "\n";
     
     if (m_gameMode == ServerMode) {
         // Send to all connected clients
@@ -197,9 +199,14 @@ void NetworkManager::onDataReceived()
 {
     QTcpSocket *socket = qobject_cast<QTcpSocket*>(sender());
     if (!socket) return;
-
-    QByteArray data = socket->readAll();
-    processMessage(data);
+    m_incomingBuffer.append(socket->readAll());
+    while (true) {
+        int newlineIndex = m_incomingBuffer.indexOf('\n');
+        if (newlineIndex == -1) break;
+        QByteArray message = m_incomingBuffer.left(newlineIndex);
+        m_incomingBuffer = m_incomingBuffer.mid(newlineIndex + 1);
+        processMessage(message);
+    }
 }
 
 void NetworkManager::onSocketError()
