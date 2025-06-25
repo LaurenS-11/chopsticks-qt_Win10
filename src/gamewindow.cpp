@@ -593,7 +593,6 @@ void GameWindow::triggerAIMove()
 
 void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
 {
-    if (playerId == m_localPlayerId) return; // Ignore our own moves
     Player* remotePlayer = (playerId == 1) ? player1 : player2;
     Player* remoteOpponent = (playerId == 1) ? player2 : player1;
     currentPlayer = remotePlayer;
