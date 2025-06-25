@@ -234,6 +234,7 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.h
  mdp:C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h
  mdp:C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp
+C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument
@@ -608,7 +609,6 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h
  mdp:C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h
  mdp:C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h
  mdp:C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h
-C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument

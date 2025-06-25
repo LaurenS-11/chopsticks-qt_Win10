@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
-project(chopsticks-qt VERSION 0.1.0 LANGUAGES C CXX)
+
+# Generate current timestamp for version
+string(TIMESTAMP BUILD_TIMESTAMP "%Y%m%d" UTC)
+string(TIMESTAMP BUILD_DATE "%Y-%m-%d" UTC)
+string(TIMESTAMP BUILD_YEAR "%Y" UTC)
+
+project(chopsticks-qt VERSION 1.2.${BUILD_TIMESTAMP} LANGUAGES C CXX)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -35,6 +41,17 @@ add_executable(chopsticks-qt
 
 target_link_libraries(chopsticks-qt Qt5::Widgets Qt5::Network)
 # For Qt6, use: target_link_libraries(chopsticks-qt Qt6::Widgets Qt6::Network)
+
+# Generate version header file with build information
+string(TIMESTAMP BUILD_FULL_TIMESTAMP "%Y-%m-%d %H:%M:%S UTC" UTC)
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/version.h.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/version.h"
+    @ONLY
+)
+
+# Include the generated directory for version.h
+target_include_directories(chopsticks-qt PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
 # Automatically copy Qt5 and MinGW runtime DLLs to build directory after build
 add_custom_command(TARGET chopsticks-qt POST_BUILD
@@ -72,16 +89,20 @@ set_property(TARGET chopsticks-qt PROPERTY CXX_STANDARD 17)
 # CPack configuration for creating installers
 set(CPACK_PACKAGE_NAME "Chopsticks-Qt")
 set(CPACK_PACKAGE_VENDOR "Chopsticks Qt Developer")
-set(CPACK_PACKAGE_VERSION "1.0.0")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Classic Chopsticks finger game built with Qt5")
-set(CPACK_PACKAGE_DESCRIPTION "A Qt-based implementation of the classic Chopsticks finger game with modern UI and automatic dependency deployment.")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "2") 
+set(CPACK_PACKAGE_VERSION_PATCH "${BUILD_TIMESTAMP}")
+set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-win64")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Classic Chopsticks finger game built with Qt5 - Enhanced Edition")
+set(CPACK_PACKAGE_DESCRIPTION "A Qt-based implementation of the classic Chopsticks finger game with AI opponents, network multiplayer, and enhanced user experience. Built on ${BUILD_DATE}.")
 set(CPACK_PACKAGE_EXECUTABLES "chopsticks-qt" "Chopsticks Game")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 
 # Windows-specific installer settings
 if(WIN32)
     set(CPACK_GENERATOR "NSIS;ZIP")  # Creates both NSIS installer and ZIP package
-    set(CPACK_NSIS_DISPLAY_NAME "Chopsticks Qt Game")
+    set(CPACK_NSIS_DISPLAY_NAME "Chopsticks Qt Game (${BUILD_DATE})")
     set(CPACK_NSIS_PACKAGE_NAME "Chopsticks Qt Game")
     set(CPACK_NSIS_CONTACT "chopsticks.qt@example.com")
     set(CPACK_NSIS_HELP_LINK "https://github.com/yourusername/chopsticks-qt")

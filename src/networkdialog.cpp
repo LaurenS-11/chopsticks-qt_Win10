@@ -371,3 +371,18 @@ quint16 NetworkDialog::getServerPort() const
            static_cast<quint16>(m_clientPortSpinBox->value()) : 
            static_cast<quint16>(m_portSpinBox->value());
 }
+
+void NetworkDialog::addDebugButton(QPushButton *debugButton)
+{
+    // Find the button layout and add the debug button before OK/Cancel
+    QHBoxLayout *buttonLayout = qobject_cast<QHBoxLayout*>(m_mainLayout->itemAt(m_mainLayout->count() - 1)->layout());
+    if (buttonLayout) {
+        // Remove the stretch
+        QLayoutItem *stretch = buttonLayout->takeAt(0);
+        delete stretch;
+        
+        // Add debug button, then stretch, then OK/Cancel buttons
+        buttonLayout->insertWidget(0, debugButton);
+        buttonLayout->insertStretch(1);
+    }
+}

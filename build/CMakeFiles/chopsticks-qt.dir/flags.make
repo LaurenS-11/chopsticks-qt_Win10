@@ -3,15 +3,15 @@
 
 # compile CXX with C:/msys64/mingw64/bin/c++.exe
 # compile RC with C:/msys64/mingw64/bin/windres.exe
-CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB
+CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB
 
 CXX_INCLUDES = @CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -std=gnu++17
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17
 
-RC_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB
+RC_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB
 
-RC_INCLUDES = -I C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/include -I C:/Qt/5.15.2/mingw81_64/include -I C:/Qt/5.15.2/mingw81_64/include/QtWidgets -I C:/Qt/5.15.2/mingw81_64/include/QtGui -I C:/Qt/5.15.2/mingw81_64/include/QtANGLE -I C:/Qt/5.15.2/mingw81_64/include/QtCore -I C:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++ -I C:/Qt/5.15.2/mingw81_64/include/QtNetwork
+RC_INCLUDES = -I C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/include -I C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build -I C:/Qt/5.15.2/mingw81_64/include -I C:/Qt/5.15.2/mingw81_64/include/QtWidgets -I C:/Qt/5.15.2/mingw81_64/include/QtGui -I C:/Qt/5.15.2/mingw81_64/include/QtANGLE -I C:/Qt/5.15.2/mingw81_64/include/QtCore -I C:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++ -I C:/Qt/5.15.2/mingw81_64/include/QtNetwork
 
 RC_FLAGS = 
 

@@ -37,6 +37,9 @@ public:
     QString getServerAddress() const;
     quint16 getServerPort() const;
     
+    // Add debug button to the dialog
+    void addDebugButton(QPushButton *debugButton);
+    
 signals:
     void gameConfigured(GameType gameType, NetworkManager::GameMode networkMode, 
                        const QString &address, quint16 port, int aiDifficulty);

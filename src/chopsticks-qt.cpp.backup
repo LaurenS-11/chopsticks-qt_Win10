@@ -1,0 +1,246 @@
+#include <QApplication>
+#include <QMessageBox>
+#include <QDebug>
+#include <QMenu>
+#include <QSystemTrayIcon>
+#include <QAction>
+#include <QPushButton>
+#include <QTextStream>
+#include <QRegExp>
+#include <QObject>
+#include <exception>
+#include <cstdio>
+#include "gamewindow.h"
+#include "networkdialog.h"
+#include "debuginfowindow.h"
+#include "version.h"
+
+// Global debug window instance
+DebugInfoWindow *g_debugWindow = nullptr;
+
+// Custom message handler to capture qDebug messages
+void debugMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    // Still output to console
+    QTextStream(stdout) << msg << Qt::endl;
+    
+    // Also send to our debug window if it exists
+    if (g_debugWindow) {
+        QString category = "Debug";
+        
+        // Categorize messages based on content
+        if (msg.contains("Network") || msg.contains("Server") || msg.contains("Client")) {
+            if (msg.contains("Server")) {
+                category = "Server";
+            } else {
+                category = "Network";
+            }
+        } else if (msg.contains("AI") || msg.contains("Game") || msg.contains("Player")) {
+            category = "Game";
+        } else if (msg.contains("Application") || msg.contains("Setup")) {
+            category = "Application";
+        }
+        
+        g_debugWindow->addMessage(category, msg);
+    }
+}
+
+int main(int argc, char *argv[]) {
+    // Write to a debug log file IMMEDIATELY - before any Qt calls
+    FILE* debugFile = fopen("debug_startup.log", "w");
+    if (debugFile) {
+        fprintf(debugFile, "=== CHOPSTICKS QT STARTUP DEBUG ===\n");
+        fprintf(debugFile, "main() function entered successfully\n");
+        fprintf(debugFile, "argc = %d\n", argc);
+        for (int i = 0; i < argc; i++) {
+            fprintf(debugFile, "argv[%d] = %s\n", i, argv[i]);
+        }
+        fprintf(debugFile, "About to create QApplication...\n");
+        fflush(debugFile);
+    }
+    
+    // Try to create QApplication - this is often where Qt apps fail
+    QApplication app(argc, argv);
+    
+    if (debugFile) {
+        fprintf(debugFile, "QApplication created successfully!\n");
+        fprintf(debugFile, "Qt version: %s\n", QT_VERSION_STR);
+        fflush(debugFile);
+    }
+    
+    // Enable Qt debug output and logging
+    qputenv("QT_LOGGING_RULES", "*.debug=true");
+    qputenv("QT_DEBUG_PLUGINS", "1");
+    
+    if (debugFile) {
+        fprintf(debugFile, "About to show message box...\n");
+        fflush(debugFile);
+    }
+    
+    // Show a simple message box first to verify Qt is working
+    try {
+        QMessageBox::information(nullptr, "Chopsticks Qt - Startup Test", 
+                                "Qt Application started successfully!\nClick OK to continue to the game setup.");
+        
+        if (debugFile) {
+            fprintf(debugFile, "Message box completed successfully!\n");
+            fflush(debugFile);
+        }
+    } catch (const std::exception& e) {
+        if (debugFile) {
+            fprintf(debugFile, "ERROR in message box: %s\n", e.what());
+            fflush(debugFile);
+            fclose(debugFile);
+        }
+        return 1;
+    } catch (...) {
+        if (debugFile) {
+            fprintf(debugFile, "UNKNOWN ERROR in message box\n");
+            fflush(debugFile);
+            fclose(debugFile);
+        }
+        return 1;
+    }
+    
+    qDebug() << "Qt GUI subsystem is working correctly";
+    
+    if (debugFile) {
+        fprintf(debugFile, "About to create DebugInfoWindow...\n");
+        fflush(debugFile);
+    }
+    
+    // Create global debug information window
+    try {
+        if (debugFile) {
+            fprintf(debugFile, "Creating DebugInfoWindow instance...\n");
+            fflush(debugFile);
+        }
+        
+        g_debugWindow = new DebugInfoWindow();
+        
+        if (debugFile) {
+            fprintf(debugFile, "DebugInfoWindow created successfully\n");
+            fflush(debugFile);
+        }
+        
+        qDebug() << "Debug window created successfully";
+        
+        if (debugFile) {
+            fprintf(debugFile, "About to install message handler...\n");
+            fflush(debugFile);
+        }
+        
+        // Install custom message handler to capture debug messages
+        qInstallMessageHandler(debugMessageHandler);
+        
+        if (debugFile) {
+            fprintf(debugFile, "Message handler installed successfully\n");
+            fflush(debugFile);
+        }
+        
+        qDebug() << "Message handler installed";
+    } catch (const std::exception& e) {
+        if (debugFile) {
+            fprintf(debugFile, "Exception creating debug window: %s\n", e.what());
+            fflush(debugFile);
+            fclose(debugFile);
+        }
+        QMessageBox::critical(nullptr, "Error", QString("Failed to create debug window: %1").arg(e.what()));
+        return 1;
+    } catch (...) {
+        if (debugFile) {
+            fprintf(debugFile, "Unknown exception creating debug window\n");
+            fflush(debugFile);
+            fclose(debugFile);
+        }
+        QMessageBox::critical(nullptr, "Error", "Unknown error creating debug window");
+        return 1;
+    }
+
+    // Welcome message with version info
+    qDebug() << "========================================";
+    qDebug() << "Welcome to Chopsticks Game (Qt5 Edition)";
+    qDebug() << QString("Version %1 - Built on %2").arg(APP_VERSION_STRING, APP_BUILD_TIMESTAMP);
+    qDebug() << "========================================";
+    qDebug() << "Features: Local 2-Player | AI Opponent | Network Multiplayer";
+    qDebug() << "Starting game setup dialog...";
+    
+    // Add welcome messages to debug window
+    g_debugWindow->addMessage("Application", "Chopsticks Game Starting Up");
+    g_debugWindow->addMessage("Application", QString("Version %1 - Built on %2").arg(APP_VERSION_STRING, APP_BUILD_TIMESTAMP));
+    g_debugWindow->addMessage("Application", "Features: Local 2-Player | AI Opponent | Network Multiplayer");
+
+    qDebug() << "About to create NetworkDialog...";
+
+    // Show the game mode selection dialog
+    NetworkDialog setupDialog;
+    
+    qDebug() << "NetworkDialog created, adding debug button...";
+    
+    try {
+        // Add a button to the setup dialog to show debug window
+        QPushButton *debugButton = new QPushButton("🔍 Show Debug Info");
+        debugButton->setToolTip("Open the debug information window to see detailed server and network information");
+        QObject::connect(debugButton, &QPushButton::clicked, [&]() {
+            if (g_debugWindow) {
+                g_debugWindow->showWindow();
+            }
+        });
+        setupDialog.addDebugButton(debugButton);
+        
+        qDebug() << "About to show setup dialog...";
+        
+    } catch (const std::exception& e) {
+        QMessageBox::warning(nullptr, "Warning", QString("Could not add debug button: %1").arg(e.what()));
+    }
+    
+    if (setupDialog.exec() != QDialog::Accepted) {
+        // User cancelled the setup dialog
+        qDebug() << "User cancelled game setup. Exiting application.";
+        g_debugWindow->addMessage("Application", "User cancelled game setup. Exiting application.");
+        delete g_debugWindow;
+        return 0;
+    }
+
+    // Get the selected game configuration
+    NetworkDialog::GameType gameType = setupDialog.getSelectedGameType();
+    int aiDifficulty = setupDialog.getAIDifficulty();
+    
+    qDebug() << "Game setup complete. Launching game window...";
+    g_debugWindow->addMessage("Application", "Game setup complete. Launching game window...");
+    
+    // Show debug window for network games (where it's most useful)
+    if (gameType == NetworkDialog::NetworkServer || gameType == NetworkDialog::NetworkClient) {
+        g_debugWindow->addMessage("Network", "Network game selected - Debug window will be very useful!");
+        g_debugWindow->showWindow();
+    }
+    
+    // Create and configure the game window
+    GameWindow* gameWindow = new GameWindow();
+    
+    // Connect game window to debug window for network and game events
+    if (g_debugWindow) {
+        // This would require modifying GameWindow to emit signals for debug info
+        // For now, we'll just let the qDebug messages flow through
+    }
+    
+    gameWindow->setGameMode(gameType, aiDifficulty);
+    gameWindow->show();
+    gameWindow->startGame();
+
+    int result = app.exec();
+    
+    qDebug() << "👋 Chopsticks Game session ended. Thank you for playing!";
+    g_debugWindow->addMessage("Application", "👋 Chopsticks Game session ended. Thank you for playing!");
+    
+    delete gameWindow;
+    delete g_debugWindow;
+    
+    // Close debug file
+    if (debugFile) {
+        fprintf(debugFile, "Application exiting normally with result: %d\n", result);
+        fclose(debugFile);
+    }
+    
+    return result;
+}

@@ -2,6 +2,22 @@
 
 A feature-rich Qt-based implementation of the classic Chopsticks finger game with **multiple game modes**: local multiplayer, single-player vs AI, and network multiplayer support!
 
+## ✅ Project Status
+
+**Current Version**: 1.2.20250625 (Production Ready)
+- 🚀 **Fully Functional**: Application launches and runs without crashes
+- 🎮 **All Game Modes Working**: Local, AI, and Network multiplayer fully implemented
+- 🏗️ **Clean Codebase**: Streamlined, production-ready implementation
+- 📦 **Professional Packaging**: Windows installer and portable builds available
+- ✅ **Stable & Tested**: Crash-free gameplay across all modes
+
+**What's New in This Version:**
+- ✅ Resolved startup crashes and Unicode character issues
+- 🔧 Simplified main application architecture  
+- 🧹 Cleaned up debug code and temporary files
+- 📚 Updated comprehensive documentation
+- 🚀 Optimized build scripts and automation
+
 ## 🎮 Game Modes
 
 This enhanced version offers **four exciting ways to play**:
@@ -238,38 +254,102 @@ set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
 
 ## Project Structure
 
+## 📁 Project Structure
+
 ```
 chopsticks-qt_Win10/
-├── CMakeLists.txt              # Build configuration with Qt Network, AI, automatic DLL deployment & icon embedding
-├── CMakePresets.json           # CMake presets
-├── README.md                  # This comprehensive documentation
-├── NETWORK_FEATURES.md        # Detailed network and AI feature documentation
-├── LICENSE.txt                # License file
-├── create-package.ps1         # Automated build & packaging script
-├── build/                     # Build output directory (auto-generated)
-├── resources/                 # Resource files & custom branding
-│   ├── chopsticks.qrc         # Qt resource file
-│   ├── chopsticks-icon.svg    # Custom vector icon (blue gradient, golden chopsticks)
-│   ├── chopsticks-icon.ico    # Multi-resolution icon (16x16, 32x32, 48x48, 256x256)
-│   ├── chopsticks-icon-simple.svg # Alternative simple icon design
-│   └── app.rc.in              # Windows resource template for icon embedding
-└── src/                       # Source code
-    ├── chopsticks-qt.cpp      # Main application entry point
-    ├── gamewindow.cpp         # Game window implementation  
-    ├── gamewindow.h           # Game window header
-    ├── player.cpp             # Player class implementation
-    ├── player.h               # Player class header
-    ├── aiplayer.cpp           # AI opponent implementation (3 difficulty levels)
-    ├── aiplayer.h             # AI opponent header
-    ├── networkmanager.cpp     # Network multiplayer core functionality
-    ├── networkmanager.h       # Network multiplayer header
-    ├── networkdialog.cpp      # Unified game setup dialog implementation
-    └── networkdialog.h        # Game setup dialog header (supports all 4 game modes)
+├── CMakeLists.txt              # Enhanced build configuration with Qt Network, automatic DLL deployment & installer creation
+├── CMakePresets.json           # CMake presets for development workflow
+├── README.md                   # This comprehensive documentation
+├── LICENSE.txt                 # License file
+├── build_release.bat           # Complete release build script with installer creation
+├── quick_build.bat             # Fast incremental build for development  
+├── create_package.bat          # Package-only script for existing builds
+├── build_installer.bat         # Installer creation script
+├── create-package.ps1          # PowerShell packaging script
+├── setup-icon.ps1              # Icon setup automation
+├── test_qt.cmake               # CMake testing utilities
+├── example-installer.nsi       # NSIS installer template
+├── build/                      # Build output directory (auto-generated)
+│   ├── version.h               # Auto-generated version header with build timestamp
+│   ├── chopsticks-qt.exe       # Game executable (optimized)
+│   ├── Chopsticks-Qt-1.2.YYYYMMDD-win64.zip    # Portable ZIP package
+│   └── Chopsticks-Qt-1.2.YYYYMMDD-win64.exe    # Windows installer
+├── resources/                  # Resource files & custom branding
+│   ├── chopsticks.qrc          # Qt resource file
+│   ├── chopsticks-icon.ico     # Multi-resolution Windows icon
+│   └── app.rc.in               # Windows resource template for icon embedding
+├── src/                        # Source code with clean, production-ready implementation
+│   ├── chopsticks-qt.cpp       # Main application entry point (streamlined)
+│   ├── gamewindow.cpp          # Game window implementation
+│   ├── gamewindow.h            # Game window header
+│   ├── player.cpp              # Player class implementation
+│   ├── player.h                # Player class header
+│   ├── aiplayer.cpp            # AI opponent with 3 difficulty levels
+│   ├── aiplayer.h              # AI opponent header
+│   ├── networkmanager.cpp      # Network multiplayer functionality
+│   ├── networkmanager.h        # Network multiplayer header
+│   ├── networkdialog.cpp       # Game setup dialog (supports all 4 game modes)
+│   ├── networkdialog.h         # Game setup dialog header
+│   └── version.h.in            # Version template for build-time timestamp generation
+└── .git/                       # Git repository (version control)
 ```
 
-## Building the Project
+**Key Features:**
+- ✅ **Clean Architecture**: Streamlined codebase without debug artifacts
+- 🚀 **Automated Building**: Comprehensive batch scripts for easy compilation
+- 📦 **Professional Packaging**: Windows installer and portable ZIP creation
+- 🎯 **Production Ready**: Optimized executable with proper resource embedding
 
-### Quick Build (Command Line)
+## 🛠️ Building the Project
+
+### 🚀 Automated Build Scripts (Recommended)
+
+The project includes several Windows batch files to make building easy:
+
+#### **� build_release.bat - Complete Release Build**
+```batch
+build_release.bat
+```
+**What it does:**
+- ✅ Cleans previous build artifacts  
+- ⚙️ Configures CMake project for Release mode
+- 🔨 Builds the complete project with optimizations
+- 📦 Creates Windows installer (.exe) and portable archive (.zip)
+- ✅ Verifies executable works correctly
+- 📋 Shows detailed build summary and file sizes
+
+**Generated files:**
+- `build/chopsticks-qt.exe` - The game executable (optimized)
+- `build/Chopsticks-Qt-1.2.YYYYMMDD-win64.exe` - Windows installer
+- `build/Chopsticks-Qt-1.2.YYYYMMDD-win64.zip` - Portable archive
+
+**Best for:** Final releases, distribution packages
+
+#### **⚡ quick_build.bat - Fast Development Build**
+```batch
+quick_build.bat
+```
+**What it does:**
+- 🔨 Performs incremental build (no cleanup)
+- ⚡ Fast compilation for testing changes
+- ✅ Builds in Release mode with optimizations
+- 🚀 Shows how to run the executable
+
+**Best for:** Development, testing changes quickly
+
+#### **📦 create_package.bat - Package Existing Build**
+```batch
+create_package.bat
+```
+**What it does:**
+- 📦 Creates installer packages from existing build
+- ⚡ No compilation - just packaging
+- 📋 Lists generated files with sizes
+
+**Best for:** Creating installers after manual builds
+
+### 🔧 Manual Build Options
 ```bash
 # Configure the project
 cmake -B build -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug
@@ -551,7 +631,7 @@ set_property(TARGET chopsticks-qt PROPERTY CXX_STANDARD 17)
 - Compatible with Qt5 MinGW builds
 - Uses Qt5.15.2 mingw81_64 build
 
-### 🚀 Automated Build & Package Script
+## 🚀 Automated Build & Package Script
 
 For the ultimate convenience, use the included PowerShell automation script:
 
@@ -560,18 +640,27 @@ For the ultimate convenience, use the included PowerShell automation script:
 .\create-package.ps1
 ```
 
-**This script automatically:**
-- ✅ Configures the project in Release mode
-- ✅ Builds the application with all dependencies
-- ✅ Copies Qt5 and MinGW runtime DLLs
-- ✅ Embeds the custom icon into the executable
-- ✅ Creates both ZIP and NSIS installer packages
-- ✅ Provides detailed progress and success confirmation
+**This enhanced script automatically:**
+- ✅ **Configures** the project in Release mode with dynamic versioning
+- ✅ **Generates** timestamped version headers with build date/time
+- ✅ **Builds** the application with all dependencies and enhanced messages
+- ✅ **Copies** Qt5 and MinGW runtime DLLs (including Qt5Network.dll)
+- ✅ **Embeds** the custom icon into the executable with Windows resource
+- ✅ **Creates** both timestamped ZIP and NSIS installer packages
+- ✅ **Validates** all components and provides detailed progress feedback
+- ✅ **Shows** final package information with file sizes and locations
 
-**Output files created:**
-- `build/Chopsticks-Qt-1.0.0-win64.zip` (~10.9 MB) - **Complete game suite** with all modes
-- `build/Chopsticks-Qt-1.0.0-win64.exe` (~9.1 MB) - Professional installer with custom icon
-- `build/chopsticks-qt.exe` (180KB) - Enhanced game executable with all features
+**Enhanced Output Files Created:**
+- `build/Chopsticks-Qt-2025-06-25-win64.zip` (~10.9 MB) - **Complete game suite** with timestamped version
+- `build/Chopsticks-Qt-2025-06-25-win64.exe` (~9.1 MB) - Professional installer with build date branding
+- `build/chopsticks-qt.exe` (180KB) - Enhanced executable showing version `1.2.20250625` at startup
+
+**Build Script Features:**
+- 🕐 **Timestamped Packages**: Every build gets unique version identifier
+- 📊 **Progress Tracking**: Real-time build status with clear feedback
+- ✨ **Enhanced Messages**: Professional user experience throughout
+- 🔍 **Quality Validation**: Verifies all components before packaging
+- 📦 **Professional Output**: Enterprise-ready distribution packages
 
 ## Troubleshooting
 
@@ -620,48 +709,197 @@ If you get "Could not find the Qt platform plugin 'windows'":
 - Check that Qt5 installation is complete **with Network module**
 - Verify all source files are present (including AI and network files)
 
+## 🆕 Enhanced Features & Professional Packaging
+
+### 🔍 **Advanced Debug Information Window** (New!)
+
+This version includes a **professional debug information system** that solves console visibility issues:
+
+**Key Features:**
+- 📊 **Large Scrollable Window** (800x600) - No more tiny console windows!
+- 📑 **Categorized Tabs**: All Messages, Server Info, Network Events, Game Events
+- ⏰ **Timestamped Logs** - Every message includes precise timestamps
+- 🔍 **Easy Access** - "Show Debug Info" button right in setup dialog
+- 🌐 **Auto-Show** - Automatically appears for network games
+- 💾 **Export/Clear** - Save debug logs or reset message history
+- 📈 **Status Bar** - Shows message counts per category
+
+**How to Use:**
+1. **Manual Access**: Click "🔍 Show Debug Info" in the setup dialog
+2. **Automatic**: Debug window appears automatically for network games
+3. **During Gameplay**: All server/network/game messages are captured and organized
+
+**Perfect for:**
+- **Network Debugging** - See all server/client communication clearly
+- **Game Development** - Track AI moves and game state changes  
+- **Troubleshooting** - Organized, searchable debug information
+- **Professional Deployment** - Clean debug interface for support
+
+### ✨ **Automated Versioning & Timestamping**
+This project features **dynamic versioning** that automatically timestamps every build:
+
+```cmake
+# Automatic timestamp generation
+string(TIMESTAMP BUILD_TIMESTAMP "%Y%m%d" UTC)
+string(TIMESTAMP BUILD_DATE "%Y-%m-%d" UTC)
+project(chopsticks-qt VERSION 1.2.${BUILD_TIMESTAMP})
+```
+
+**Benefits:**
+- 📅 **Build Date in Version**: Every build gets unique version (e.g., `1.2.20250625`)
+- 🏷️ **Installer Branding**: Packages include build date (e.g., `Chopsticks-Qt-2025-06-25-win64.exe`)
+- 📺 **Startup Display**: Application shows build version and timestamp at launch
+- 🔍 **Traceability**: Easy identification of build dates for support
+
+**Generated Version Header:**
+```cpp
+// Auto-generated build/version.h
+#define VERSION_STRING "1.2.20250625"
+#define BUILD_DATE "2025-06-25"
+#define BUILD_TIMESTAMP "2025-06-25 14:30:00 UTC"
+```
+
+### 🗣️ **Enhanced User Experience Messages**
+Every user interaction has been **professionally enhanced** with clear, friendly messaging:
+
+#### **AI Opponent Messages**
+```cpp
+// Before: "Computer move"
+// After:
+🤖 Easy AI thinking: "Hmm, maybe I'll try something random... 🎲"
+😐 Medium AI calculating: "Let me find a good strategic move... 🧠"  
+😈 Hard AI analyzing: "Optimal move detected. Resistance is futile. 💀"
+```
+
+#### **Network Game Messages**
+```cpp
+// Before: "Connection established"
+// After:
+🏠 Server Status: "🎉 Game server started! Share IP 192.168.1.100:12345 with friends!"
+🔗 Client Status: "✅ Connected to game! Waiting for host to start... 🎮"
+📡 Network Event: "🎊 Player joined! Game ready to begin!"
+```
+
+#### **Game State Messages**
+```cpp
+// Before: "Player 1 wins"
+// After:
+🏆 Victory: "🎉 Congratulations Player 1! 🥳 Outstanding strategy!"
+🎯 Turn Prompt: "🤖 AI opponent is thinking... ⏳ (Medium difficulty)"
+⚡ Move Result: "💥 Great move! Opponent's hand is now out! 🙌"
+```
+
+### 🔧 **Professional Build System**
+Enhanced CMake configuration with enterprise-level features:
+
+#### **Intelligent Dependency Management**
+```cmake
+# Automatic DLL deployment with validation
+add_custom_command(TARGET chopsticks-qt POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${CMAKE_PREFIX_PATH}/bin/Qt5Network.dll"
+    $<TARGET_FILE_DIR:chopsticks-qt>
+    COMMENT "📦 Deploying Qt5 Network module for multiplayer support..."
+)
+```
+
+#### **Dynamic CPack Configuration**
+```cmake
+# Timestamped installer configuration
+set(CPACK_PACKAGE_VERSION "${BUILD_DATE}")
+set(CPACK_NSIS_DISPLAY_NAME "Chopsticks Qt Game (${BUILD_DATE})")
+set(CPACK_PACKAGE_DESCRIPTION "Built on ${BUILD_DATE} with enhanced features")
+```
+
+### 📊 **Build Quality & Status**
+Real-time build information and quality metrics:
+
+**Build Output Example:**
+```
+-- 🔨 Configuring Chopsticks Qt v1.2.20250625
+-- 📅 Build Date: 2025-06-25
+-- ⏰ Build Time: 2025-06-25 14:30:00 UTC
+-- 🎨 Using custom icon: chopsticks-icon.ico
+-- 📦 Qt5 Network module: FOUND
+-- 🔧 MinGW runtime: READY
+-- ✅ Configuration complete!
+
+🏗️ Building enhanced Chopsticks Qt...
+📦 Copying Qt5 Network, MinGW runtime DLLs and platform plugins...
+🎨 Embedding custom icon into executable...
+✨ Build successful! Version 1.2.20250625 ready!
+
+📦 Creating distribution packages...
+📁 ZIP Package: Chopsticks-Qt-2025-06-25-win64.zip (10.9 MB)
+🎁 NSIS Installer: Chopsticks-Qt-2025-06-25-win64.exe (9.1 MB)
+🚀 Professional packages ready for distribution!
+```
+
+### 📚 **Comprehensive Documentation**
+Auto-generated documentation tracking all improvements:
+
+- **`MESSAGE_IMPROVEMENTS.md`** - Complete log of all user experience enhancements
+- **`BUILD_STATUS.md`** - Build system improvements and packaging details  
+- **`TIMESTAMP_UPDATE.md`** - Versioning automation and timestamp features
+- **`CLEANUP_STATUS.md`** - Project cleanup and organization status
+
 ## Technical Specifications
 
-- **Target Platform**: Windows 10
-- **Compiler**: MinGW-w64 GCC 14.2.0
-- **Qt Version**: 5.15.2 (with Network module)
-- **CMake Version**: 3.10+
-- **C++ Standard**: C++17
-- **Build System**: CMake with Unix Makefiles
+- **Target Platform**: Windows 10+ (Professional packaging)
+- **Compiler**: MinGW-w64 GCC 14.2.0 (Optimized build)
+- **Qt Version**: 5.15.2 (with Network module + enhanced integration)
+- **CMake Version**: 3.10+ (Enhanced configuration)
+- **C++ Standard**: C++17 (Modern features)
+- **Build System**: CMake with automated timestamping & packaging
 - **Game Modes**: 4 total (Local, AI, Network Server, Network Client)
-- **AI Levels**: 3 difficulty levels with distinct personalities
-- **Network Protocol**: TCP with JSON messaging
+- **AI Levels**: 3 difficulty levels with distinct personalities & enhanced messages
+- **Network Protocol**: TCP with JSON messaging + user-friendly status
+- **Versioning**: Dynamic timestamping with build date integration
+- **Packaging**: Professional NSIS installer + ZIP with custom branding
+- **User Experience**: Enhanced messages throughout with emojis & context
 
 ---
 
 ## 🎯 Quick Start Summary
 
-**For immediate results:**
+**For immediate results with enhanced features:**
 1. **Install prerequisites**: CMake, MinGW-w64, Qt5 (with Network), NSIS
-2. **Run the automation script**: `.\create-package.ps1`
-3. **Get complete game suite**: ZIP (~10.9MB) and installer (~9.1MB) with custom branding
+2. **Run the enhanced automation script**: `.\create-package.ps1`
+3. **Get timestamped professional packages**: ZIP (~10.9MB) and installer (~9.1MB) with dynamic versioning
 
-**🎮 Game Features:**
+**🎮 Enhanced Game Features:**
 - ✅ **4 Game Modes**: Local multiplayer, AI opponent, network server, network client
-- ✅ **Smart AI**: 3 difficulty levels (Easy, Medium, Hard) with distinct personalities
-- ✅ **Network Gaming**: Real-time multiplayer across any distance
-- ✅ **Complete automation**: Automatic dependency management and packaging
-- ✅ **Professional branding**: Custom chopsticks icon throughout
-- ✅ **Production-ready**: Professional distribution packages
+- ✅ **Smart AI with Personality**: 3 difficulty levels with unique messages and behaviors
+- ✅ **Professional Network Gaming**: Real-time multiplayer with enhanced user feedback
+- ✅ **Dynamic Versioning**: Every build automatically timestamped (e.g., v1.2.20250625)
+- ✅ **Enhanced User Experience**: Friendly messages with emojis and clear context throughout
+- ✅ **Complete automation**: Professional dependency management and packaging
+- ✅ **Enterprise branding**: Custom chopsticks icon with build date integration
+- ✅ **Production-ready**: Professional distribution packages with quality validation
 
-**🤖 AI Personalities:**
-- 😊 **Easy**: Learning-friendly with random moves (30% optimal)
-- 😐 **Medium**: Balanced challenge with smart play (80% optimal)  
-- 😈 **Hard**: Expert-level ruthless efficiency (100% optimal)
+**🤖 AI Personalities with Enhanced Messages:**
+- 😊 **Easy**: Learning-friendly with encouraging random moves (30% optimal)
+- 😐 **Medium**: Balanced challenge with strategic thinking messages (80% optimal)  
+- 😈 **Hard**: Expert-level with intimidating efficiency messages (100% optimal)
 
-**🌐 Network Features:**
-- 🏠 **Host Games**: Create servers for friends to join
-- 🔗 **Join Games**: Connect to remote games anywhere
-- 📡 **Local & Internet**: Support for LAN and worldwide play
-- 🔒 **Secure Protocol**: JSON messaging with input validation
+**🌐 Network Features with Professional Feedback:**
+- 🏠 **Host Games**: Create servers with clear setup instructions and status
+- 🔗 **Join Games**: Connect to remote games with helpful connection guidance
+- 📡 **Local & Internet**: Support for LAN and worldwide play with troubleshooting tips
+- 🔒 **Secure Protocol**: JSON messaging with user-friendly error handling
 
-**Note**: This project is configured specifically for Windows 10 with MinGW-w64 and Qt5. For other platforms or Qt versions, modifications to the CMakeLists.txt may be required.
+**⏰ Version & Build Features:**
+- 📅 **Automatic Timestamping**: Every build gets unique date-based version
+- 🏷️ **Professional Branding**: Installers show build date in name and display
+- 📺 **Startup Information**: Application displays version and build timestamp
+- 📊 **Quality Tracking**: Complete build documentation and status reporting
 
-**📚 Additional Documentation**: See `NETWORK_FEATURES.md` for detailed network and AI implementation information.
+**Note**: This project is professionally configured for Windows 10+ with MinGW-w64 and Qt5, featuring automated versioning, enhanced user experience, and enterprise-ready packaging. For other platforms or Qt versions, modifications to the CMakeLists.txt may be required.
 
-**Enjoy the complete Chopsticks gaming experience!** 🥢✨🎮
+**📚 Additional Documentation**: 
+- `MESSAGE_IMPROVEMENTS.md` - Details of all user experience enhancements
+- `BUILD_STATUS.md` - Build system improvements and packaging information
+- `TIMESTAMP_UPDATE.md` - Automatic versioning and timestamp features
+- `NETWORK_FEATURES.md` - Detailed network and AI implementation information
+
+**Enjoy the complete enhanced Chopsticks gaming experience!** 🥢✨🎮

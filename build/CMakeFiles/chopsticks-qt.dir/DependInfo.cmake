@@ -16,12 +16,14 @@ set(CMAKE_TARGET_DEFINITIONS_RC
   "QT_CORE_LIB"
   "QT_GUI_LIB"
   "QT_NETWORK_LIB"
+  "QT_NO_DEBUG"
   "QT_WIDGETS_LIB"
   )
 
 # The include file search paths:
 set(CMAKE_RC_TARGET_INCLUDE_PATH
   "chopsticks-qt_autogen/include"
+  "."
   "C:/Qt/5.15.2/mingw81_64/include"
   "C:/Qt/5.15.2/mingw81_64/include/QtWidgets"
   "C:/Qt/5.15.2/mingw81_64/include/QtGui"
