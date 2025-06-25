@@ -7,18 +7,25 @@
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // Simple, working version without debug window
     NetworkDialog setupDialog;
-    
     if (setupDialog.exec() != QDialog::Accepted) {
         return 0;
     }
 
     NetworkDialog::GameType gameType = setupDialog.getSelectedGameType();
     int aiDifficulty = setupDialog.getAIDifficulty();
-    
-    GameWindow* gameWindow = new GameWindow();
-    gameWindow->setGameMode(gameType, aiDifficulty);
+    NetworkManager* networkManager = nullptr;
+    if (gameType == NetworkDialog::NetworkServer || gameType == NetworkDialog::NetworkClient) {
+        networkManager = setupDialog.getNetworkManager();
+    }
+    GameWindow* gameWindow = nullptr;
+    if (networkManager) {
+        gameWindow = new GameWindow(nullptr, networkManager);
+        gameWindow->setGameMode(gameType, aiDifficulty);
+    } else {
+        gameWindow = new GameWindow();
+        gameWindow->setGameMode(gameType, aiDifficulty);
+    }
     gameWindow->show();
     gameWindow->startGame();
 

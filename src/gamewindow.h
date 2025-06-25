@@ -14,10 +14,12 @@ class GameWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit GameWindow(QWidget *parent = nullptr);
+    explicit GameWindow(QWidget *parent = nullptr, NetworkManager* networkManager = nullptr);
     void setGameMode(NetworkDialog::GameType gameType, int aiDifficulty = 1);
     void startGame();
     void updateDisplay();
+    // Allow setting network manager after construction
+    void setNetworkManager(NetworkManager* networkManager);
 
 protected:
     void resizeEvent(QResizeEvent* event) override;

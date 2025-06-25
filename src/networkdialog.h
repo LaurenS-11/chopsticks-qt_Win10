@@ -40,6 +40,8 @@ public:
     // Add debug button to the dialog
     void addDebugButton(QPushButton *debugButton);
     
+    NetworkManager* getNetworkManager() const { return m_networkManager; }
+
 signals:
     void gameConfigured(GameType gameType, NetworkManager::GameMode networkMode, 
                        const QString &address, quint16 port, int aiDifficulty);

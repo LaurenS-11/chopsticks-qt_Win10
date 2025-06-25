@@ -13,9 +13,9 @@
 #include <QWindowStateChangeEvent>
 #include <QTimer>
 
-GameWindow::GameWindow(QWidget *parent)
+GameWindow::GameWindow(QWidget *parent, NetworkManager* networkManager)
     : QMainWindow(parent), player1(new Player()), player2(new Player()), currentPlayer(player1), selectedMyHand(-1),
-      m_gameType(NetworkDialog::LocalTwoPlayer), m_aiDifficulty(1), m_aiPlayer(nullptr), m_networkManager(nullptr)
+      m_gameType(NetworkDialog::LocalTwoPlayer), m_aiDifficulty(1), m_aiPlayer(nullptr), m_networkManager(networkManager)
 {
     setWindowTitle("Chopsticks Game");
     // setFixedSize(400, 350); // Remove or comment out this line
@@ -633,4 +633,8 @@ void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
     m_isMyTurn = true;
     updateDisplay();
     checkWin();
+}
+
+void GameWindow::setNetworkManager(NetworkManager* networkManager) {
+    m_networkManager = networkManager;
 }
