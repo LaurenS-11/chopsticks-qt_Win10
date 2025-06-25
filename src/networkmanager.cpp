@@ -253,6 +253,15 @@ void NetworkManager::processMessage(const QByteArray &data)
         emit gameMoveReceived(messageData["fromHand"].toInt(), 
                              messageData["toHand"].toInt(), 
                              messageData["playerId"].toInt());
+        // If we're the server, rebroadcast this move to all clients
+        if (m_gameMode == ServerMode) {
+            QByteArray rebroadcastMsg = createMessage(GameMove, messageData) + "\n";
+            for (QTcpSocket *client : m_clients) {
+                if (client->state() == QTcpSocket::ConnectedState) {
+                    client->write(rebroadcastMsg);
+                }
+            }
+        }
         break;
     case GameState:
         emit gameStateReceived(messageData);
