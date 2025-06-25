@@ -360,6 +360,14 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
         currentPlayer = opponent;
     }
     selectedMyHand = -1;
+    // --- NETWORK MULTIPLAYER ---
+    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
+        m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
+        m_isMyTurn = false;
+        // Do NOT update state or GUI here in network mode; wait for onNetworkMoveReceived
+        return;
+    }
+    // --- END NETWORK ---
     updateDisplay();
     checkWin();
     // --- NETWORK MULTIPLAYER ---
