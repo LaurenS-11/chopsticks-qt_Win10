@@ -366,7 +366,8 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
     if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
         m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
         m_isMyTurn = false;
-        updateDisplay();
+        // Do NOT updateDisplay() or checkWin() here in network mode; wait for onNetworkMoveReceived
+        return;
     }
     // --- END NETWORK ---
     if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
