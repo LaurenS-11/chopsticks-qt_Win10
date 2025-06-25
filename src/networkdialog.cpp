@@ -79,7 +79,7 @@ void NetworkDialog::setupUI()
     serverLayout->addWidget(new QLabel("Port:"), 0, 0);
     m_portSpinBox = new QSpinBox();
     m_portSpinBox->setRange(1024, 65535);
-    m_portSpinBox->setValue(12345);
+    m_portSpinBox->setValue(8080);
     serverLayout->addWidget(m_portSpinBox, 0, 1);
     
     m_startServerButton = new QPushButton("Start Server");
@@ -106,7 +106,7 @@ void NetworkDialog::setupUI()
     clientLayout->addWidget(new QLabel("Port:"), 1, 0);
     m_clientPortSpinBox = new QSpinBox();
     m_clientPortSpinBox->setRange(1024, 65535);
-    m_clientPortSpinBox->setValue(12345);
+    m_clientPortSpinBox->setValue(8080);
     clientLayout->addWidget(m_clientPortSpinBox, 1, 1);
     
     m_connectButton = new QPushButton("Connect to Server");

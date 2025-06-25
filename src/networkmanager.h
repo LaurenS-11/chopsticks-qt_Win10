@@ -31,13 +31,13 @@ public:
     ~NetworkManager();
 
     // Server functionality
-    bool startServer(quint16 port = 12345);
+    bool startServer(quint16 port = 8080);
     void stopServer();
     bool isServerRunning() const;
     QString getServerAddress() const;
 
     // Client functionality
-    bool connectToServer(const QString &address, quint16 port = 12345);
+    bool connectToServer(const QString &address, quint16 port = 8080);
     void disconnectFromServer();
     bool isConnectedToServer() const;
 

@@ -387,18 +387,18 @@ cmake --build build
 #### **Step 1: Host Setup**
 1. Launch the game on the host computer
 2. Select "🏠 Network Server (Host Game)"
-3. Choose a port (default: 12345 works great)
+3. Choose a port (default: 8080 works great)
 4. Click "Start Server"
 5. **Share your local IP** with other players:
    ```
-   Example: "Join my game at 192.168.1.100 port 12345"
+   Example: "Join my game at 192.168.1.100 port 8080"
    ```
 
 #### **Step 2: Join Setup**  
 1. Launch the game on the joining computer
 2. Select "🔗 Network Client (Join Game)"
 3. Enter the host's IP address (e.g., `192.168.1.100`)
-4. Enter the port number (e.g., `12345`)
+4. Enter the port number (e.g., `8080`)
 5. Click "Connect to Server"
 
 #### **Step 3: Start Playing**
@@ -413,7 +413,7 @@ cmake --build build
 - Host needs to share their **external IP address**
 
 #### **Host Setup** (Router Configuration Required)
-1. **Configure router**: Forward TCP port 12345 to host computer's local IP
+1. **Configure router**: Forward TCP port 8080 to host computer's local IP
 2. **Find external IP**: Use whatismyip.com or similar service
 3. **Start server**: Follow local network steps above
 4. **Share external IP**: Give friends your external IP instead of local IP
@@ -421,28 +421,28 @@ cmake --build build
 #### **Join Setup**
 1. Get external IP and port from host
 2. Follow standard joining steps using external IP
-3. Example: Connect to `203.0.113.1` port `12345`
+3. Example: Connect to `203.0.113.1` port `8080`
 
 ### **Network Troubleshooting**
 
 #### **Connection Issues**
-- ✅ **Firewall**: Allow port 12345 through Windows Firewall
+- ✅ **Firewall**: Allow port 8080 through Windows Firewall
 - ✅ **IP Address**: Verify correct IP (use `ipconfig` on Windows)  
 - ✅ **Port**: Ensure both players use the same port number
 - ✅ **Local Test**: Try with local IP first (192.168.x.x)
 
 #### **Router Configuration**
-- **Port Forwarding**: TCP port 12345 → host computer's local IP
+- **Port Forwarding**: TCP port 8080 → host computer's local IP
 - **Dynamic IP**: Consider using Dynamic DNS for changing external IPs
 - **Multiple Games**: Use different ports for multiple simultaneous games
 
 #### **Network Diagnostics** (Windows)
 ```powershell
 # Test connectivity to server
-Test-NetConnection -ComputerName [server-ip] -Port 12345
+Test-NetConnection -ComputerName [server-ip] -Port 8080
 
 # Check what ports are listening
-netstat -an | Select-String "12345"
+netstat -an | Select-String "8080"
 
 # Find your local IP address
 ipconfig | Select-String "IPv4"
@@ -673,7 +673,7 @@ For the ultimate convenience, use the included PowerShell automation script:
 - ✅ Rebuild project if AI moves seem incorrect
 
 #### **Network Connection Problems**
-- ✅ **Firewall**: Allow port 12345 through Windows Firewall
+- ✅ **Firewall**: Allow port 8080 through Windows Firewall
 - ✅ **IP Address**: Verify correct IP address (use `ipconfig` command)
 - ✅ **Port**: Ensure both players use the same port number
 - ✅ **Local Test**: Try with local IP first (192.168.x.x)
@@ -775,7 +775,7 @@ Every user interaction has been **professionally enhanced** with clear, friendly
 ```cpp
 // Before: "Connection established"
 // After:
-🏠 Server Status: "🎉 Game server started! Share IP 192.168.1.100:12345 with friends!"
+🏠 Server Status: "🎉 Game server started! Share IP 192.168.1.100:8080 with friends!"
 🔗 Client Status: "✅ Connected to game! Waiting for host to start... 🎮"
 📡 Network Event: "🎊 Player joined! Game ready to begin!"
 ```

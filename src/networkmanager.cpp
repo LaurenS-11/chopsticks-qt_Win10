@@ -11,7 +11,7 @@ NetworkManager::NetworkManager(QObject *parent)
     , m_gameMode(LocalMode)
     , m_server(nullptr)
     , m_clientSocket(nullptr)
-    , m_serverPort(12345)
+    , m_serverPort(8080)
 {
 }
 
