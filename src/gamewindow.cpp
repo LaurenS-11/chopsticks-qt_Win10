@@ -440,11 +440,14 @@ void GameWindow::setupGameMode()
         delete m_aiPlayer;
         m_aiPlayer = nullptr;
     }
-    if (m_networkManager) {
-        delete m_networkManager;
-        m_networkManager = nullptr;
+    // Only delete and create a new NetworkManager if not provided
+    if (!m_networkManager) {
+        if (m_networkManager) {
+            delete m_networkManager;
+            m_networkManager = nullptr;
+        }
     }
-
+    // Setup based on game type
     switch (m_gameType) {
         case NetworkDialog::LocalTwoPlayer:
             m_localPlayerId = 1;
@@ -461,14 +464,16 @@ void GameWindow::setupGameMode()
         case NetworkDialog::NetworkServer:
             m_localPlayerId = 1;
             m_isMyTurn = true;
-            m_networkManager = new NetworkManager(this);
+            // Only create if not provided
+            if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ServerMode);
             connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             break;
         case NetworkDialog::NetworkClient:
             m_localPlayerId = 2;
             m_isMyTurn = false;
-            m_networkManager = new NetworkManager(this);
+            // Only create if not provided
+            if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ClientMode);
             connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             break;
