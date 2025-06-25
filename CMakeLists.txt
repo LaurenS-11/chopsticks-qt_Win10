@@ -8,8 +8,8 @@ set(CMAKE_AUTOUIC ON)
 # Set Qt5 installation path
 set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
-# For Qt6, use: find_package(Qt6 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+# For Qt6, use: find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
 
 # Configure Windows resource file for icon embedding (if available)
 if(WIN32 AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/resources/chopsticks-icon.ico")
@@ -27,11 +27,14 @@ add_executable(chopsticks-qt
     src/chopsticks-qt.cpp
     src/gamewindow.cpp
     src/player.cpp
+    src/aiplayer.cpp
+    src/networkmanager.cpp
+    src/networkdialog.cpp
     ${RESOURCE_FILES}
 )
 
-target_link_libraries(chopsticks-qt Qt5::Widgets)
-# For Qt6, use: target_link_libraries(chopsticks-qt Qt6::Widgets)
+target_link_libraries(chopsticks-qt Qt5::Widgets Qt5::Network)
+# For Qt6, use: target_link_libraries(chopsticks-qt Qt6::Widgets Qt6::Network)
 
 # Automatically copy Qt5 and MinGW runtime DLLs to build directory after build
 add_custom_command(TARGET chopsticks-qt POST_BUILD
@@ -43,6 +46,9 @@ add_custom_command(TARGET chopsticks-qt POST_BUILD
     $<TARGET_FILE_DIR:chopsticks-qt>
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     "${CMAKE_PREFIX_PATH}/bin/Qt5Widgets.dll"
+    $<TARGET_FILE_DIR:chopsticks-qt>
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${CMAKE_PREFIX_PATH}/bin/Qt5Network.dll"
     $<TARGET_FILE_DIR:chopsticks-qt>
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     "${CMAKE_PREFIX_PATH}/bin/libgcc_s_seh-1.dll"
@@ -58,7 +64,7 @@ add_custom_command(TARGET chopsticks-qt POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     "${CMAKE_PREFIX_PATH}/plugins/platforms/qwindows.dll"
     $<TARGET_FILE_DIR:chopsticks-qt>/platforms/
-    COMMENT "Copying Qt5, MinGW runtime DLLs and platform plugins to build directory"
+    COMMENT "Copying Qt5 (including Network), MinGW runtime DLLs and platform plugins to build directory"
 )
 
 set_property(TARGET chopsticks-qt PROPERTY CXX_STANDARD 17)
@@ -108,6 +114,7 @@ install(FILES
     "${CMAKE_PREFIX_PATH}/bin/Qt5Core.dll"
     "${CMAKE_PREFIX_PATH}/bin/Qt5Gui.dll"
     "${CMAKE_PREFIX_PATH}/bin/Qt5Widgets.dll"
+    "${CMAKE_PREFIX_PATH}/bin/Qt5Network.dll"
     "${CMAKE_PREFIX_PATH}/bin/libgcc_s_seh-1.dll"
     "${CMAKE_PREFIX_PATH}/bin/libstdc++-6.dll"
     "${CMAKE_PREFIX_PATH}/bin/libwinpthread-1.dll"

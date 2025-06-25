@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_RC
 set(CMAKE_TARGET_DEFINITIONS_RC
   "QT_CORE_LIB"
   "QT_GUI_LIB"
+  "QT_NETWORK_LIB"
   "QT_WIDGETS_LIB"
   )
 
@@ -27,14 +28,18 @@ set(CMAKE_RC_TARGET_INCLUDE_PATH
   "C:/Qt/5.15.2/mingw81_64/include/QtANGLE"
   "C:/Qt/5.15.2/mingw81_64/include/QtCore"
   "C:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++"
+  "C:/Qt/5.15.2/mingw81_64/include/QtNetwork"
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "chopsticks-qt_autogen/timestamp" "custom" "chopsticks-qt_autogen/deps"
   "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/mocs_compilation.cpp" "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.obj.d"
+  "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp" "CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj.d"
   "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/chopsticks-qt.cpp" "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj.d"
   "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.cpp" "CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj.d"
+  "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.cpp" "CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj.d"
+  "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.cpp" "CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj.d"
   "C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.cpp" "CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj" "gcc" "CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj.d"
   )
 

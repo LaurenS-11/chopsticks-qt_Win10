@@ -52,6 +52,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
     "C:/Qt/5.15.2/mingw81_64/bin/Qt5Core.dll"
     "C:/Qt/5.15.2/mingw81_64/bin/Qt5Gui.dll"
     "C:/Qt/5.15.2/mingw81_64/bin/Qt5Widgets.dll"
+    "C:/Qt/5.15.2/mingw81_64/bin/Qt5Network.dll"
     "C:/Qt/5.15.2/mingw81_64/bin/libgcc_s_seh-1.dll"
     "C:/Qt/5.15.2/mingw81_64/bin/libstdc++-6.dll"
     "C:/Qt/5.15.2/mingw81_64/bin/libwinpthread-1.dll"

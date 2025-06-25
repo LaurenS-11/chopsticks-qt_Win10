@@ -5,12 +5,17 @@
 #include <QLabel>
 #include <QPushButton>
 #include "player.h"
+#include "networkdialog.h"
+
+class AIPlayer;
+class NetworkManager;
 
 class GameWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     explicit GameWindow(QWidget *parent = nullptr);
+    void setGameMode(NetworkDialog::GameType gameType, int aiDifficulty = 1);
     void startGame();
     void updateDisplay();
 
@@ -26,15 +31,31 @@ private:
     QLabel* player1Label;
     QLabel* player2Label;
     QLabel* turnLabel;
+    QLabel* gameModeLabel;  // New: Shows current game mode
     QPushButton* p1LeftButton;
     QPushButton* p1RightButton;
     QPushButton* p2LeftButton;
     QPushButton* p2RightButton;
     int selectedMyHand;
+    
+    // Game mode configuration
+    NetworkDialog::GameType m_gameType;
+    int m_aiDifficulty;
+    AIPlayer* m_aiPlayer;
+    NetworkManager* m_networkManager;
 
     void selectMyHand(int handIndex);
     void selectOpponentHand(int handIndex, bool isPlayer1Hand);
     void checkWin();
+    void setupGameMode();
+    void updateGameModeDisplay();
+    
+    // AI integration
+    void triggerAIMove();
+    
+private slots:
+    void onAIMove(int fromHand, int toHand);
+    void onAISplit();
 };
 
 #endif // GAMEWINDOW_H

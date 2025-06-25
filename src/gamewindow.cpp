@@ -1,5 +1,7 @@
 #include "gamewindow.h"
 #include "player.h"
+#include "aiplayer.h"
+#include "networkmanager.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -9,9 +11,11 @@
 #include <QFont>
 #include <QEvent>
 #include <QWindowStateChangeEvent>
+#include <QTimer>
 
 GameWindow::GameWindow(QWidget *parent)
-    : QMainWindow(parent), player1(new Player()), player2(new Player()), currentPlayer(player1), selectedMyHand(-1)
+    : QMainWindow(parent), player1(new Player()), player2(new Player()), currentPlayer(player1), selectedMyHand(-1),
+      m_gameType(NetworkDialog::LocalTwoPlayer), m_aiDifficulty(1), m_aiPlayer(nullptr), m_networkManager(nullptr)
 {
     setWindowTitle("Chopsticks Game");
     // setFixedSize(400, 350); // Remove or comment out this line
@@ -76,6 +80,11 @@ GameWindow::GameWindow(QWidget *parent)
     turnLabel = new QLabel;
     mainLayout->addWidget(turnLabel);
 
+    // Game mode display
+    gameModeLabel = new QLabel("Game Mode: Local Two Player");
+    gameModeLabel->setStyleSheet("color: #666; font-style: italic;");
+    mainLayout->addWidget(gameModeLabel);
+
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);
@@ -108,18 +117,68 @@ void GameWindow::startGame()
     player2->reset();
     currentPlayer = player1;
     selectedMyHand = -1;
+    
+    // Clear debug logging for new game
+    QString modeDescription;
+    switch (m_gameType) {
+        case NetworkDialog::LocalTwoPlayer:
+            modeDescription = "Local Two Player";
+            break;
+        case NetworkDialog::SinglePlayerVsAI:
+            {
+                QString difficulty;
+                switch (m_aiDifficulty) {
+                    case 0: difficulty = "Easy 😊"; break;
+                    case 1: difficulty = "Medium 😐"; break;
+                    case 2: difficulty = "Hard 😈"; break;
+                    default: difficulty = "Unknown"; break;
+                }
+                modeDescription = QString("Single Player vs AI (%1)").arg(difficulty);
+            }
+            break;
+        case NetworkDialog::NetworkServer:
+            modeDescription = "Network Server";
+            break;
+        case NetworkDialog::NetworkClient:
+            modeDescription = "Network Client";
+            break;
+    }
+    
+    qDebug() << QString("🎮 [New Game] Starting fresh Chopsticks game");
+    qDebug() << QString("   └─ Mode: %1").arg(modeDescription);
+    qDebug() << QString("   └─ Both players start with 1 finger on each hand");
+    qDebug() << QString("   └─ %1 goes first").arg(m_gameType == NetworkDialog::SinglePlayerVsAI ? "You (Human)" : "Player 1");
+    
     updateDisplay();
     checkWin();
 }
 
 void GameWindow::updateDisplay()
 {
-    player1Label->setText(QString("Player 1: Left %1 | Right %2")
-                          .arg(player1->getLeftHand())
-                          .arg(player1->getRightHand()));
-    player2Label->setText(QString("Player 2: Left %1 | Right %2")
-                          .arg(player2->getLeftHand())
-                          .arg(player2->getRightHand()));
+    // Update player labels based on game mode
+    if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
+        QString difficulty;
+        switch (m_aiDifficulty) {
+            case 0: difficulty = "Easy 😊"; break;
+            case 1: difficulty = "Medium 😐"; break;
+            case 2: difficulty = "Hard 😈"; break;
+            default: difficulty = "Unknown"; break;
+        }
+        player1Label->setText(QString("You (Human): Left %1 | Right %2")
+                              .arg(player1->getLeftHand())
+                              .arg(player1->getRightHand()));
+        player2Label->setText(QString("AI (%1): Left %2 | Right %3")
+                              .arg(difficulty)
+                              .arg(player2->getLeftHand())
+                              .arg(player2->getRightHand()));
+    } else {
+        player1Label->setText(QString("Player 1: Left %1 | Right %2")
+                              .arg(player1->getLeftHand())
+                              .arg(player1->getRightHand()));
+        player2Label->setText(QString("Player 2: Left %1 | Right %2")
+                              .arg(player2->getLeftHand())
+                              .arg(player2->getRightHand()));
+    }
 
     // Update button text to show finger counts
     p1LeftButton->setText(QString("P1 Left\n%1").arg(player1->getLeftHand()));
@@ -202,7 +261,13 @@ void GameWindow::updateDisplay()
     p1RightButton->setStyleSheet(selectedMyHand == 1 && isP1Turn ? "background: #ffe082; border: 2px solid blue;" : "background: #ffe0b2;");
     p2LeftButton->setStyleSheet(selectedMyHand == 0 && !isP1Turn ? "background: #ffe082; border: 2px solid blue;" : "background: #b3e5fc;");
     p2RightButton->setStyleSheet(selectedMyHand == 1 && !isP1Turn ? "background: #ffe082; border: 2px solid blue;" : "background: #b3e5fc;");
-    turnLabel->setText(currentPlayer == player1 ? "Player 1's turn" : "Player 2's turn");
+    
+    // Update turn label based on game mode
+    if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
+        turnLabel->setText(currentPlayer == player1 ? "Your turn" : "AI is thinking...");
+    } else {
+        turnLabel->setText(currentPlayer == player1 ? "Player 1's turn" : "Player 2's turn");
+    }
 }
 
 void GameWindow::selectMyHand(int handIndex)
@@ -234,49 +299,84 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
             int remain = total - give;
             myPlayer->setHand(handIndex, give);
             myPlayer->setHand(selectedMyHand, remain);
-            instructionsLabel->setText("Split performed!");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed split: %2 fingers → %3 + %4")
+                        .arg(playerName).arg(total).arg(remain).arg(give);
+            instructionsLabel->setText(QString("Split performed! (%1 → %2 + %3)").arg(total).arg(remain).arg(give));
             currentPlayer = opponent;
         }
         // (3,1) or (1,3) -> (2,2)
         else if ((h1 == 3 && h2 == 1) || (h1 == 1 && h2 == 3)) {
             myPlayer->setHand(selectedMyHand, 2);
             myPlayer->setHand(handIndex, 2);
-            instructionsLabel->setText("Split performed! (2,2)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (2,2)")
+                        .arg(playerName).arg(h1).arg(h2);
+            instructionsLabel->setText("Advanced split performed! (2,2)");
             currentPlayer = opponent;
         }
         // (4,1) or (1,4) -> (3,2) or (2,3)
         else if ((h1 == 4 && h2 == 1) || (h1 == 1 && h2 == 4)) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 2);
-            instructionsLabel->setText("Split performed! (3,2) or (2,3)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (3,2)")
+                        .arg(playerName).arg(h1).arg(h2);
+            instructionsLabel->setText("Advanced split performed! (3,2)");
             currentPlayer = opponent;
         }
         // (2,2) -> (3,1) or (1,3)
         else if (h1 == 2 && h2 == 2) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 1);
-            instructionsLabel->setText("Split performed! (3,1) or (1,3)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (2,2) → (3,1)")
+                        .arg(playerName);
+            instructionsLabel->setText("Advanced split performed! (3,1)");
             currentPlayer = opponent;
         }
         // (2,3) or (3,2) -> (4,1) or (1,4)
         else if ((h1 == 2 && h2 == 3) || (h1 == 3 && h2 == 2)) {
             myPlayer->setHand(selectedMyHand, 4);
             myPlayer->setHand(handIndex, 1);
-            instructionsLabel->setText("Split performed! (4,1) or (1,4)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (4,1)")
+                        .arg(playerName).arg(h1).arg(h2);
+            instructionsLabel->setText("Advanced split performed! (4,1)");
             currentPlayer = opponent;
         }
         // (2,4) or (4,2) -> (3,3)
         else if ((h1 == 2 && h2 == 4) || (h1 == 4 && h2 == 2)) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 3);
-            instructionsLabel->setText("Split performed! (3,3)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (3,3)")
+                        .arg(playerName).arg(h1).arg(h2);
+            instructionsLabel->setText("Advanced split performed! (3,3)");
             currentPlayer = opponent;
         }
         // (3,3) -> (4,2) or (2,4)
         else if (h1 == 3 && h2 == 3) {
             myPlayer->setHand(selectedMyHand, 4);
             myPlayer->setHand(handIndex, 2);
-            instructionsLabel->setText("Split performed! (4,2) or (2,4)");
+            
+            QString playerName = (currentPlayer == player1) ? 
+                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (3,3) → (4,2)")
+                        .arg(playerName);
+            instructionsLabel->setText("Advanced split performed! (4,2)");
             currentPlayer = opponent;
         }
         else {
@@ -289,23 +389,60 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
             instructionsLabel->setText("Cannot tap a dead hand. Choose another.");
             return;
         }
+        
+        QString attackerName = (currentPlayer == player1) ? 
+            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
+        QString defenderName = (opponent == player1) ? 
+            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : 
+            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "AI" : "Player 2");
+        QString attackerHand = (selectedMyHand == 0) ? "Left" : "Right";
+        QString defenderHand = (handIndex == 0) ? "Left" : "Right";
+        
+        qDebug() << QString("🎯 [Game Action] %1 attacks: %2's %3 hand (%4 fingers) → %5's %6 hand (%7 fingers)")
+                    .arg(attackerName)
+                    .arg(attackerName, attackerHand)
+                    .arg(currentPlayer->getHand(selectedMyHand))
+                    .arg(defenderName, defenderHand)
+                    .arg(opponent->getHand(handIndex));
+        
         currentPlayer->tap(*opponent, selectedMyHand, handIndex);
-        instructionsLabel->setText("Tap performed!");
+        instructionsLabel->setText(QString("%1 tapped %2's %3 hand!").arg(attackerName, defenderName, defenderHand));
         currentPlayer = opponent;
     }
 
     selectedMyHand = -1;
     updateDisplay();
     checkWin();
+    
+    // Trigger AI move if it's AI's turn and game hasn't ended
+    if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
+        QTimer::singleShot(1500, this, &GameWindow::triggerAIMove); // 1.5 second delay for natural feel
+    }
 }
 
 void GameWindow::checkWin()
 {
     if (player1->isOut()) {
-        QMessageBox::information(this, "Game Over", "Player 2 wins!");
+        QString message;
+        if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
+            message = "🤖 AI Wins! 🏆\n\nThe AI defeated you this time.\nTry again or adjust the difficulty level!";
+            qDebug() << QString("🏁 [Game Over] AI Victory! Human player eliminated");
+        } else {
+            message = "🎉 Player 2 Wins! 🏆\n\nPlayer 1 has been eliminated.\nGreat game!";
+            qDebug() << QString("🏁 [Game Over] Player 2 Victory! Player 1 eliminated");
+        }
+        QMessageBox::information(this, "Game Over", message);
         startGame();
     } else if (player2->isOut()) {
-        QMessageBox::information(this, "Game Over", "Player 1 wins!");
+        QString message;
+        if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
+            message = "🎉 You Win! 🏆\n\nCongratulations! You defeated the AI.\nWell played!";
+            qDebug() << QString("🏁 [Game Over] Human Victory! AI eliminated");
+        } else {
+            message = "🎉 Player 1 Wins! 🏆\n\nPlayer 2 has been eliminated.\nGreat game!";
+            qDebug() << QString("🏁 [Game Over] Player 1 Victory! Player 2 eliminated");
+        }
+        QMessageBox::information(this, "Game Over", message);
         startGame();
     }
 }
@@ -331,5 +468,167 @@ void GameWindow::changeEvent(QEvent* event)
     QMainWindow::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange) {
         updateDisplay(); // Force layout/font update
+    }
+}
+
+void GameWindow::setGameMode(NetworkDialog::GameType gameType, int aiDifficulty)
+{
+    m_gameType = gameType;
+    m_aiDifficulty = aiDifficulty;
+    setupGameMode();
+    updateGameModeDisplay();
+}
+
+void GameWindow::setupGameMode()
+{
+    // Clean up any existing game mode objects
+    if (m_aiPlayer) {
+        delete m_aiPlayer;
+        m_aiPlayer = nullptr;
+    }
+    if (m_networkManager) {
+        delete m_networkManager;
+        m_networkManager = nullptr;
+    }
+
+    // Setup based on game type
+    switch (m_gameType) {
+        case NetworkDialog::LocalTwoPlayer:
+            // Default mode - no additional setup needed
+            break;
+            
+        case NetworkDialog::SinglePlayerVsAI:
+            // Create AI player
+            m_aiPlayer = new AIPlayer(this);
+            m_aiPlayer->setDifficulty(static_cast<AIPlayer::Difficulty>(m_aiDifficulty));
+            
+            // Connect AI signals to game logic
+            connect(m_aiPlayer, &AIPlayer::moveDecided, this, &GameWindow::onAIMove);
+            connect(m_aiPlayer, &AIPlayer::splitDecided, this, &GameWindow::onAISplit);
+            break;
+            
+        case NetworkDialog::NetworkServer:
+            // Create network manager in server mode
+            m_networkManager = new NetworkManager(this);
+            m_networkManager->setGameMode(NetworkManager::ServerMode);
+            // TODO: Setup server functionality
+            break;
+            
+        case NetworkDialog::NetworkClient:
+            // Create network manager in client mode
+            m_networkManager = new NetworkManager(this);
+            m_networkManager->setGameMode(NetworkManager::ClientMode);
+            // TODO: Setup client functionality
+            break;
+    }
+}
+
+void GameWindow::updateGameModeDisplay()
+{
+    QString modeText;
+    switch (m_gameType) {
+        case NetworkDialog::LocalTwoPlayer:
+            modeText = "Game Mode: 👥 Local Two Player";
+            break;
+        case NetworkDialog::SinglePlayerVsAI:
+            {
+                QString difficulty;
+                switch (m_aiDifficulty) {
+                    case 0: difficulty = "Easy 😊"; break;
+                    case 1: difficulty = "Medium 😐"; break;
+                    case 2: difficulty = "Hard 😈"; break;
+                    default: difficulty = "Unknown"; break;
+                }
+                modeText = QString("Game Mode: 🤖 Single Player vs AI (%1)").arg(difficulty);
+            }
+            break;
+        case NetworkDialog::NetworkServer:
+            modeText = "Game Mode: 🏠 Network Server (Hosting)";
+            break;
+        case NetworkDialog::NetworkClient:
+            modeText = "Game Mode: 🔗 Network Client (Connected)";
+            break;
+    }
+    gameModeLabel->setText(modeText);
+}
+
+void GameWindow::onAIMove(int fromHand, int toHand)
+{
+    if (m_gameType != NetworkDialog::SinglePlayerVsAI || !m_aiPlayer) {
+        return;
+    }
+    
+    // AI wants to tap - fromHand is AI's hand, toHand is human's hand
+    if (currentPlayer == player2) { // AI is player2
+        QString fromHandName = (fromHand == 0) ? "Left" : "Right";
+        QString toHandName = (toHand == 0) ? "Left" : "Right";
+        
+        qDebug() << QString("🎯 [Game Action] AI executed attack: AI's %1 hand (%2 fingers) → Your %3 hand (%4 fingers)")
+                    .arg(fromHandName)
+                    .arg(player2->getHand(fromHand))
+                    .arg(toHandName)
+                    .arg(player1->getHand(toHand));
+        
+        currentPlayer->tap(*player1, fromHand, toHand);
+        instructionsLabel->setText(QString("AI attacked your %1 hand!").arg(toHandName));
+        currentPlayer = player1; // Switch back to human
+        selectedMyHand = -1;
+        updateDisplay();
+        checkWin();
+    }
+}
+
+void GameWindow::onAISplit()
+{
+    if (m_gameType != NetworkDialog::SinglePlayerVsAI || !m_aiPlayer) {
+        return;
+    }
+    
+    // AI wants to split hands
+    if (currentPlayer == player2) { // AI is player2
+        // Find a valid split move for the AI
+        // For simplicity, let's implement the most common split (even hand -> half/half)
+        int leftHand = player2->getLeftHand();
+        int rightHand = player2->getRightHand();
+        
+        qDebug() << QString("🔄 [Game Action] AI executing split strategy");
+        qDebug() << QString("   └─ Before Split: Left=%1, Right=%2").arg(leftHand).arg(rightHand);
+        
+        if (leftHand > 1 && leftHand % 2 == 0 && rightHand == 0) {
+            // Split left hand in half, give to right hand
+            int give = leftHand / 2;
+            player2->setHand(0, give); // left hand
+            player2->setHand(1, give); // right hand
+            instructionsLabel->setText(QString("AI split their left hand (%1 → %2 + %3)!").arg(leftHand).arg(give).arg(give));
+            qDebug() << QString("   └─ After Split: Left=%1, Right=%2").arg(give).arg(give);
+        } else if (rightHand > 1 && rightHand % 2 == 0 && leftHand == 0) {
+            // Split right hand in half, give to left hand
+            int give = rightHand / 2;
+            player2->setHand(1, give); // right hand
+            player2->setHand(0, give); // left hand
+            instructionsLabel->setText(QString("AI split their right hand (%1 → %2 + %3)!").arg(rightHand).arg(give).arg(give));
+            qDebug() << QString("   └─ After Split: Left=%1, Right=%2").arg(give).arg(give);
+        } else {
+            instructionsLabel->setText("AI attempted to split but couldn't find a valid split!");
+            qDebug() << QString("   └─ Split Failed: No valid split available");
+        }
+        
+        currentPlayer = player1; // Switch back to human
+        selectedMyHand = -1;
+        updateDisplay();
+        checkWin();
+    }
+}
+
+void GameWindow::triggerAIMove()
+{
+    if (m_gameType != NetworkDialog::SinglePlayerVsAI || !m_aiPlayer) {
+        return;
+    }
+    
+    // Only trigger AI if it's AI's turn (player2) and game hasn't ended
+    if (currentPlayer == player2 && !player1->isOut() && !player2->isOut()) {
+        // Ask AI to make a move
+        m_aiPlayer->makeMove(*player2, *player1);
     }
 }

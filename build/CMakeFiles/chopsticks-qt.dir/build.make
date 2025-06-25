@@ -139,9 +139,54 @@ CMakeFiles/chopsticks-qt.dir/src/player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chopsticks-qt.dir/src/player.cpp.s"
 	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.cpp -o CMakeFiles/chopsticks-qt.dir/src/player.cpp.s
 
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj: CMakeFiles/chopsticks-qt.dir/flags.make
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj: CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj: C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj: CMakeFiles/chopsticks-qt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj -MF CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj.d -o CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp
+
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.i"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp > CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.i
+
+CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.s"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/aiplayer.cpp -o CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.s
+
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj: CMakeFiles/chopsticks-qt.dir/flags.make
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj: CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj: C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.cpp
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj: CMakeFiles/chopsticks-qt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj -MF CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj.d -o CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.cpp
+
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.i"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.cpp > CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.i
+
+CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.s"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.cpp -o CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.s
+
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj: CMakeFiles/chopsticks-qt.dir/flags.make
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj: CMakeFiles/chopsticks-qt.dir/includes_CXX.rsp
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj: C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.cpp
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj: CMakeFiles/chopsticks-qt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj -MF CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj.d -o CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj -c C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.cpp
+
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.i"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.cpp > CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.i
+
+CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.s"
+	C:/msys64/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.cpp -o CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.s
+
 CMakeFiles/chopsticks-qt.dir/app.rc.obj: CMakeFiles/chopsticks-qt.dir/flags.make
 CMakeFiles/chopsticks-qt.dir/app.rc.obj: app.rc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building RC object CMakeFiles/chopsticks-qt.dir/app.rc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building RC object CMakeFiles/chopsticks-qt.dir/app.rc.obj"
 	C:/msys64/mingw64/bin/windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/app.rc CMakeFiles/chopsticks-qt.dir/app.rc.obj
 
 # Object files for target chopsticks-qt
@@ -150,6 +195,9 @@ chopsticks__qt_OBJECTS = \
 "CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj" \
 "CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj" \
 "CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj" \
+"CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj" \
+"CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj" \
+"CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj" \
 "CMakeFiles/chopsticks-qt.dir/app.rc.obj"
 
 # External object files for target chopsticks-qt
@@ -159,21 +207,26 @@ chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compi
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/chopsticks-qt.cpp.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/player.cpp.obj
+chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj
+chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj
+chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/app.rc.obj
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/build.make
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a
+chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Network.a
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a
 chopsticks-qt.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/linkLibs.rsp
 chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable chopsticks-qt.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable chopsticks-qt.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/chopsticks-qt.dir/objects.a
 	C:/msys64/mingw64/bin/ar.exe qc CMakeFiles/chopsticks-qt.dir/objects.a @CMakeFiles/chopsticks-qt.dir/objects1.rsp
 	C:/msys64/mingw64/bin/c++.exe -g -Wl,--whole-archive CMakeFiles/chopsticks-qt.dir/objects.a -Wl,--no-whole-archive -o chopsticks-qt.exe -Wl,--out-implib,libchopsticks-qt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/chopsticks-qt.dir/linkLibs.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying Qt5, MinGW runtime DLLs and platform plugins to build directory"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying Qt5 (including Network), MinGW runtime DLLs and platform plugins to build directory"
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Core.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Gui.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Widgets.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
+	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Network.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/libgcc_s_seh-1.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/libstdc++-6.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/libwinpthread-1.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build

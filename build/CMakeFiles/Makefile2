@@ -88,12 +88,12 @@ CMakeFiles/chopsticks-qt.dir/all: CMakeFiles/chopsticks-qt_autogen.dir/all
 CMakeFiles/chopsticks-qt.dir/all: CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target chopsticks-qt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target chopsticks-qt"
 .PHONY : CMakeFiles/chopsticks-qt.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/chopsticks-qt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/chopsticks-qt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles 0
 .PHONY : CMakeFiles/chopsticks-qt.dir/rule
@@ -105,7 +105,7 @@ chopsticks-qt: CMakeFiles/chopsticks-qt.dir/rule
 # codegen rule for target.
 CMakeFiles/chopsticks-qt.dir/codegen: CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target chopsticks-qt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target chopsticks-qt"
 .PHONY : CMakeFiles/chopsticks-qt.dir/codegen
 
 # clean rule for target.
@@ -152,7 +152,7 @@ CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir/clean:
 CMakeFiles/chopsticks-qt_autogen.dir/all: CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt_autogen.dir/build.make CMakeFiles/chopsticks-qt_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt_autogen.dir/build.make CMakeFiles/chopsticks-qt_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=8 "Built target chopsticks-qt_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=11 "Built target chopsticks-qt_autogen"
 .PHONY : CMakeFiles/chopsticks-qt_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -169,7 +169,7 @@ chopsticks-qt_autogen: CMakeFiles/chopsticks-qt_autogen.dir/rule
 # codegen rule for target.
 CMakeFiles/chopsticks-qt_autogen.dir/codegen: CMakeFiles/chopsticks-qt_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt_autogen.dir/build.make CMakeFiles/chopsticks-qt_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=8 "Finished codegen for target chopsticks-qt_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=11 "Finished codegen for target chopsticks-qt_autogen"
 .PHONY : CMakeFiles/chopsticks-qt_autogen.dir/codegen
 
 # clean rule for target.

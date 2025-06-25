@@ -252,6 +252,30 @@ chopsticks-qt_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/chopsticks-qt_autogen/mocs_compilation.cpp.s
 .PHONY : chopsticks-qt_autogen/mocs_compilation.cpp.s
 
+src/aiplayer.obj: src/aiplayer.cpp.obj
+.PHONY : src/aiplayer.obj
+
+# target to build an object file
+src/aiplayer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.obj
+.PHONY : src/aiplayer.cpp.obj
+
+src/aiplayer.i: src/aiplayer.cpp.i
+.PHONY : src/aiplayer.i
+
+# target to preprocess a source file
+src/aiplayer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.i
+.PHONY : src/aiplayer.cpp.i
+
+src/aiplayer.s: src/aiplayer.cpp.s
+.PHONY : src/aiplayer.s
+
+# target to generate assembly for a file
+src/aiplayer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/aiplayer.cpp.s
+.PHONY : src/aiplayer.cpp.s
+
 src/chopsticks-qt.obj: src/chopsticks-qt.cpp.obj
 .PHONY : src/chopsticks-qt.obj
 
@@ -300,6 +324,54 @@ src/gamewindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/gamewindow.cpp.s
 .PHONY : src/gamewindow.cpp.s
 
+src/networkdialog.obj: src/networkdialog.cpp.obj
+.PHONY : src/networkdialog.obj
+
+# target to build an object file
+src/networkdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.obj
+.PHONY : src/networkdialog.cpp.obj
+
+src/networkdialog.i: src/networkdialog.cpp.i
+.PHONY : src/networkdialog.i
+
+# target to preprocess a source file
+src/networkdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.i
+.PHONY : src/networkdialog.cpp.i
+
+src/networkdialog.s: src/networkdialog.cpp.s
+.PHONY : src/networkdialog.s
+
+# target to generate assembly for a file
+src/networkdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkdialog.cpp.s
+.PHONY : src/networkdialog.cpp.s
+
+src/networkmanager.obj: src/networkmanager.cpp.obj
+.PHONY : src/networkmanager.obj
+
+# target to build an object file
+src/networkmanager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.obj
+.PHONY : src/networkmanager.cpp.obj
+
+src/networkmanager.i: src/networkmanager.cpp.i
+.PHONY : src/networkmanager.i
+
+# target to preprocess a source file
+src/networkmanager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.i
+.PHONY : src/networkmanager.cpp.i
+
+src/networkmanager.s: src/networkmanager.cpp.s
+.PHONY : src/networkmanager.s
+
+# target to generate assembly for a file
+src/networkmanager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chopsticks-qt.dir/build.make CMakeFiles/chopsticks-qt.dir/src/networkmanager.cpp.s
+.PHONY : src/networkmanager.cpp.s
+
 src/player.obj: src/player.cpp.obj
 .PHONY : src/player.obj
 
@@ -345,12 +417,21 @@ help:
 	@echo "... chopsticks-qt_autogen/mocs_compilation.obj"
 	@echo "... chopsticks-qt_autogen/mocs_compilation.i"
 	@echo "... chopsticks-qt_autogen/mocs_compilation.s"
+	@echo "... src/aiplayer.obj"
+	@echo "... src/aiplayer.i"
+	@echo "... src/aiplayer.s"
 	@echo "... src/chopsticks-qt.obj"
 	@echo "... src/chopsticks-qt.i"
 	@echo "... src/chopsticks-qt.s"
 	@echo "... src/gamewindow.obj"
 	@echo "... src/gamewindow.i"
 	@echo "... src/gamewindow.s"
+	@echo "... src/networkdialog.obj"
+	@echo "... src/networkdialog.i"
+	@echo "... src/networkdialog.s"
+	@echo "... src/networkmanager.obj"
+	@echo "... src/networkmanager.i"
+	@echo "... src/networkmanager.s"
 	@echo "... src/player.obj"
 	@echo "... src/player.i"
 	@echo "... src/player.s"

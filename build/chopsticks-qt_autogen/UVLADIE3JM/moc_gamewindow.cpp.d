@@ -1,18 +1,29 @@
 C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/UVLADIE3JM/moc_gamewindow.cpp: C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/gamewindow.h \
   C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/moc_predefs.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearraylist.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qcompilerdetection.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainertools_impl.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatastream.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qflags.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qgenericatomic.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
@@ -21,9 +32,14 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_aut
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qhashfunctions.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qline.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qlist.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qlogging.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qmargins.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -38,7 +54,9 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_aut
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qrect.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qregexp.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qscopedpointer.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
@@ -52,7 +70,12 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_aut
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsysinfo.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsystemdetection.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcore-config.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qtypeinfo.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qvector.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
@@ -68,30 +91,78 @@ C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_aut
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qmatrix.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpaintdevice.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpalette.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpixelformat.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpixmap.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpolygon.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qregion.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qrgb.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qrgba64.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtgui-config.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiglobal.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpServer \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qabstractsocket.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qhostaddress.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpserver.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QButtonGroup \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMainWindow \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QTextEdit \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qbuttongroup.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qrubberband.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtabbar.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtabwidget.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtextedit.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h \
+  C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkdialog.h \
+  C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/networkmanager.h \
   C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/src/player.h \
   C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/_mingw_mac.h \
