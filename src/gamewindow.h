@@ -65,9 +65,8 @@ private:
 private slots:
     void onAIMove(int fromHand, int toHand);
     void onAISplit();
-    // Network multiplayer: handle move received from network
-    void onNetworkMoveReceived(int fromHand, int toHand, int playerId);
     void onNetworkGameStateReceived(const QJsonObject& state);
+    void onServerSendGameState();
 };
 
 #endif // GAMEWINDOW_H

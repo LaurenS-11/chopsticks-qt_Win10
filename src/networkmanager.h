@@ -42,7 +42,6 @@ public:
     bool isConnectedToServer() const;
 
     // Game communication
-    void sendGameMove(int fromHand, int toHand, int playerId);
     void sendGameState(const QJsonObject &gameState);
     void sendMessage(MessageType type, const QJsonObject &data);
 
@@ -53,6 +52,7 @@ signals:
     // Server signals
     void clientConnected(const QString &clientInfo);
     void clientDisconnected();
+    void requestSendGameState();
     
     // Client signals
     void connectedToServer();
@@ -60,7 +60,6 @@ signals:
     void connectionError(const QString &error);
     
     // Game signals
-    void gameMoveReceived(int fromHand, int toHand, int playerId);
     void gameStateReceived(const QJsonObject &gameState);
     void messageReceived(MessageType type, const QJsonObject &data);
 

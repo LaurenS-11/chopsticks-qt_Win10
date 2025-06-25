@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_NetworkManager_t {
-    QByteArrayData data[25];
-    char stringdata0[344];
+    QByteArrayData data[22];
+    char stringdata0[323];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,38 +37,34 @@ QT_MOC_LITERAL(1, 15, 15), // "clientConnected"
 QT_MOC_LITERAL(2, 31, 0), // ""
 QT_MOC_LITERAL(3, 32, 10), // "clientInfo"
 QT_MOC_LITERAL(4, 43, 18), // "clientDisconnected"
-QT_MOC_LITERAL(5, 62, 17), // "connectedToServer"
-QT_MOC_LITERAL(6, 80, 22), // "disconnectedFromServer"
-QT_MOC_LITERAL(7, 103, 15), // "connectionError"
-QT_MOC_LITERAL(8, 119, 5), // "error"
-QT_MOC_LITERAL(9, 125, 16), // "gameMoveReceived"
-QT_MOC_LITERAL(10, 142, 8), // "fromHand"
-QT_MOC_LITERAL(11, 151, 6), // "toHand"
-QT_MOC_LITERAL(12, 158, 8), // "playerId"
-QT_MOC_LITERAL(13, 167, 17), // "gameStateReceived"
-QT_MOC_LITERAL(14, 185, 9), // "gameState"
-QT_MOC_LITERAL(15, 195, 15), // "messageReceived"
-QT_MOC_LITERAL(16, 211, 11), // "MessageType"
-QT_MOC_LITERAL(17, 223, 4), // "type"
-QT_MOC_LITERAL(18, 228, 4), // "data"
-QT_MOC_LITERAL(19, 233, 15), // "onNewConnection"
-QT_MOC_LITERAL(20, 249, 20), // "onClientDisconnected"
-QT_MOC_LITERAL(21, 270, 14), // "onDataReceived"
-QT_MOC_LITERAL(22, 285, 13), // "onSocketError"
-QT_MOC_LITERAL(23, 299, 19), // "onConnectedToServer"
-QT_MOC_LITERAL(24, 319, 24) // "onDisconnectedFromServer"
+QT_MOC_LITERAL(5, 62, 20), // "requestSendGameState"
+QT_MOC_LITERAL(6, 83, 17), // "connectedToServer"
+QT_MOC_LITERAL(7, 101, 22), // "disconnectedFromServer"
+QT_MOC_LITERAL(8, 124, 15), // "connectionError"
+QT_MOC_LITERAL(9, 140, 5), // "error"
+QT_MOC_LITERAL(10, 146, 17), // "gameStateReceived"
+QT_MOC_LITERAL(11, 164, 9), // "gameState"
+QT_MOC_LITERAL(12, 174, 15), // "messageReceived"
+QT_MOC_LITERAL(13, 190, 11), // "MessageType"
+QT_MOC_LITERAL(14, 202, 4), // "type"
+QT_MOC_LITERAL(15, 207, 4), // "data"
+QT_MOC_LITERAL(16, 212, 15), // "onNewConnection"
+QT_MOC_LITERAL(17, 228, 20), // "onClientDisconnected"
+QT_MOC_LITERAL(18, 249, 14), // "onDataReceived"
+QT_MOC_LITERAL(19, 264, 13), // "onSocketError"
+QT_MOC_LITERAL(20, 278, 19), // "onConnectedToServer"
+QT_MOC_LITERAL(21, 298, 24) // "onDisconnectedFromServer"
 
     },
     "NetworkManager\0clientConnected\0\0"
     "clientInfo\0clientDisconnected\0"
-    "connectedToServer\0disconnectedFromServer\0"
-    "connectionError\0error\0gameMoveReceived\0"
-    "fromHand\0toHand\0playerId\0gameStateReceived\0"
-    "gameState\0messageReceived\0MessageType\0"
-    "type\0data\0onNewConnection\0"
-    "onClientDisconnected\0onDataReceived\0"
-    "onSocketError\0onConnectedToServer\0"
-    "onDisconnectedFromServer"
+    "requestSendGameState\0connectedToServer\0"
+    "disconnectedFromServer\0connectionError\0"
+    "error\0gameStateReceived\0gameState\0"
+    "messageReceived\0MessageType\0type\0data\0"
+    "onNewConnection\0onClientDisconnected\0"
+    "onDataReceived\0onSocketError\0"
+    "onConnectedToServer\0onDisconnectedFromServer"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,28 +86,28 @@ static const uint qt_meta_data_NetworkManager[] = {
        4,    0,   87,    2, 0x06 /* Public */,
        5,    0,   88,    2, 0x06 /* Public */,
        6,    0,   89,    2, 0x06 /* Public */,
-       7,    1,   90,    2, 0x06 /* Public */,
-       9,    3,   93,    2, 0x06 /* Public */,
-      13,    1,  100,    2, 0x06 /* Public */,
-      15,    2,  103,    2, 0x06 /* Public */,
+       7,    0,   90,    2, 0x06 /* Public */,
+       8,    1,   91,    2, 0x06 /* Public */,
+      10,    1,   94,    2, 0x06 /* Public */,
+      12,    2,   97,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      19,    0,  108,    2, 0x08 /* Private */,
-      20,    0,  109,    2, 0x08 /* Private */,
-      21,    0,  110,    2, 0x08 /* Private */,
-      22,    0,  111,    2, 0x08 /* Private */,
-      23,    0,  112,    2, 0x08 /* Private */,
-      24,    0,  113,    2, 0x08 /* Private */,
+      16,    0,  102,    2, 0x08 /* Private */,
+      17,    0,  103,    2, 0x08 /* Private */,
+      18,    0,  104,    2, 0x08 /* Private */,
+      19,    0,  105,    2, 0x08 /* Private */,
+      20,    0,  106,    2, 0x08 /* Private */,
+      21,    0,  107,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    8,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   10,   11,   12,
-    QMetaType::Void, QMetaType::QJsonObject,   14,
-    QMetaType::Void, 0x80000000 | 16, QMetaType::QJsonObject,   17,   18,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, QMetaType::QJsonObject,   11,
+    QMetaType::Void, 0x80000000 | 13, QMetaType::QJsonObject,   14,   15,
 
  // slots: parameters
     QMetaType::Void,
@@ -132,10 +128,10 @@ void NetworkManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         switch (_id) {
         case 0: _t->clientConnected((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->clientDisconnected(); break;
-        case 2: _t->connectedToServer(); break;
-        case 3: _t->disconnectedFromServer(); break;
-        case 4: _t->connectionError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 5: _t->gameMoveReceived((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 2: _t->requestSendGameState(); break;
+        case 3: _t->connectedToServer(); break;
+        case 4: _t->disconnectedFromServer(); break;
+        case 5: _t->connectionError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 6: _t->gameStateReceived((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         case 7: _t->messageReceived((*reinterpret_cast< MessageType(*)>(_a[1])),(*reinterpret_cast< const QJsonObject(*)>(_a[2]))); break;
         case 8: _t->onNewConnection(); break;
@@ -164,28 +160,28 @@ void NetworkManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         }
         {
             using _t = void (NetworkManager::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::connectedToServer)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::requestSendGameState)) {
                 *result = 2;
                 return;
             }
         }
         {
             using _t = void (NetworkManager::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::disconnectedFromServer)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::connectedToServer)) {
                 *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (NetworkManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::disconnectedFromServer)) {
+                *result = 4;
                 return;
             }
         }
         {
             using _t = void (NetworkManager::*)(const QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::connectionError)) {
-                *result = 4;
-                return;
-            }
-        }
-        {
-            using _t = void (NetworkManager::*)(int , int , int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NetworkManager::gameMoveReceived)) {
                 *result = 5;
                 return;
             }
@@ -261,28 +257,27 @@ void NetworkManager::clientDisconnected()
 }
 
 // SIGNAL 2
-void NetworkManager::connectedToServer()
+void NetworkManager::requestSendGameState()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 
 // SIGNAL 3
-void NetworkManager::disconnectedFromServer()
+void NetworkManager::connectedToServer()
 {
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 
 // SIGNAL 4
-void NetworkManager::connectionError(const QString & _t1)
+void NetworkManager::disconnectedFromServer()
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 4, _a);
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }
 
 // SIGNAL 5
-void NetworkManager::gameMoveReceived(int _t1, int _t2, int _t3)
+void NetworkManager::connectionError(const QString & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 

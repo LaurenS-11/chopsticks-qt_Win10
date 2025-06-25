@@ -131,15 +131,6 @@ bool NetworkManager::isConnectedToServer() const
     return m_clientSocket && m_clientSocket->state() == QTcpSocket::ConnectedState;
 }
 
-void NetworkManager::sendGameMove(int fromHand, int toHand, int playerId)
-{
-    QJsonObject data;
-    data["fromHand"] = fromHand;
-    data["toHand"] = toHand;
-    data["playerId"] = playerId;
-    sendMessage(GameMove, data);
-}
-
 void NetworkManager::sendGameState(const QJsonObject &gameState)
 {
     sendMessage(GameState, gameState);
@@ -249,22 +240,6 @@ void NetworkManager::processMessage(const QByteArray &data)
     QJsonObject messageData = message["data"].toObject();
 
     switch (type) {
-    case GameMove:
-        emit gameMoveReceived(messageData["fromHand"].toInt(), 
-                             messageData["toHand"].toInt(), 
-                             messageData["playerId"].toInt());
-        // If we're the server, rebroadcast this move to all clients
-        if (m_gameMode == ServerMode) {
-            QByteArray rebroadcastMsg = createMessage(GameMove, messageData) + "\n";
-            for (QTcpSocket *client : m_clients) {
-                if (client->state() == QTcpSocket::ConnectedState) {
-                    client->write(rebroadcastMsg);
-                }
-            }
-            // Also send the full game state to all clients if available
-            // (Assume the server's game logic will call sendGameState after applying the move)
-        }
-        break;
     case GameState:
         emit gameStateReceived(messageData);
         break;

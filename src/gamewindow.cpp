@@ -361,22 +361,15 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
     }
     selectedMyHand = -1;
     // --- NETWORK MULTIPLAYER ---
-    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
-        m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
+    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager) {
         m_networkManager->sendGameState(toJson());
-        m_isMyTurn = false;
-        // Do NOT update state or GUI here in network mode; wait for onNetworkGameStateReceived
-        return;
     }
     // --- END NETWORK ---
     updateDisplay();
     checkWin();
-    // --- NETWORK MULTIPLAYER ---
-    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
-        m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
-        m_isMyTurn = false;
-        // Do NOT updateDisplay() or checkWin() here in network mode; wait for onNetworkMoveReceived
-        return;
+    // --- NETWORK PEER-TO-PEER ---
+    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager) {
+        m_networkManager->sendGameState(toJson());
     }
     // --- END NETWORK ---
     if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
@@ -477,8 +470,8 @@ void GameWindow::setupGameMode()
             // Only create if not provided
             if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ServerMode);
-            connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             connect(m_networkManager, &NetworkManager::gameStateReceived, this, &GameWindow::onNetworkGameStateReceived);
+            connect(m_networkManager, &NetworkManager::requestSendGameState, this, &GameWindow::onServerSendGameState);
             break;
         case NetworkDialog::NetworkClient:
             m_localPlayerId = 2;
@@ -486,7 +479,6 @@ void GameWindow::setupGameMode()
             // Only create if not provided
             if (!m_networkManager) m_networkManager = new NetworkManager(this);
             m_networkManager->setGameMode(NetworkManager::ClientMode);
-            connect(m_networkManager, &NetworkManager::gameMoveReceived, this, &GameWindow::onNetworkMoveReceived);
             connect(m_networkManager, &NetworkManager::gameStateReceived, this, &GameWindow::onNetworkGameStateReceived);
             break;
     }
@@ -602,55 +594,6 @@ void GameWindow::triggerAIMove()
     }
 }
 
-void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
-{
-    Player* remotePlayer = (playerId == 1) ? player1 : player2;
-    Player* remoteOpponent = (playerId == 1) ? player2 : player1;
-    currentPlayer = remotePlayer;
-    selectedMyHand = fromHand;
-    // Simulate the move
-    if ((remotePlayer == player1 && fromHand < 2 && toHand < 2 && toHand == fromHand) ||
-        (remotePlayer == player2 && fromHand < 2 && toHand < 2 && toHand == fromHand)) {
-        // Split or revive
-        int h1 = remotePlayer->getHand(fromHand);
-        int h2 = remotePlayer->getHand(toHand);
-        // Use same split logic as selectOpponentHand
-        if (h2 == 0 && h1 > 1) {
-            int total = h1;
-            int give = total / 2;
-            int remain = total - give;
-            remotePlayer->setHand(toHand, give);
-            remotePlayer->setHand(fromHand, remain);
-        } else if ((h1 == 3 && h2 == 1) || (h1 == 1 && h2 == 3)) {
-            remotePlayer->setHand(fromHand, 2);
-            remotePlayer->setHand(toHand, 2);
-        } else if ((h1 == 4 && h2 == 1) || (h1 == 1 && h2 == 4)) {
-            remotePlayer->setHand(fromHand, 3);
-            remotePlayer->setHand(toHand, 2);
-        } else if (h1 == 2 && h2 == 2) {
-            remotePlayer->setHand(fromHand, 3);
-            remotePlayer->setHand(toHand, 1);
-        } else if ((h1 == 2 && h2 == 3) || (h1 == 3 && h2 == 2)) {
-            remotePlayer->setHand(fromHand, 4);
-            remotePlayer->setHand(toHand, 1);
-        } else if ((h1 == 2 && h2 == 4) || (h1 == 4 && h2 == 2)) {
-            remotePlayer->setHand(fromHand, 3);
-            remotePlayer->setHand(toHand, 3);
-        } else if (h1 == 3 && h2 == 3) {
-            remotePlayer->setHand(fromHand, 4);
-            remotePlayer->setHand(toHand, 2);
-        }
-    } else {
-        // Normal tap
-        remotePlayer->tap(*remoteOpponent, fromHand, toHand);
-    }
-    currentPlayer = remoteOpponent;
-    selectedMyHand = -1;
-    m_isMyTurn = true;
-    updateDisplay();
-    checkWin();
-}
-
 void GameWindow::onNetworkGameStateReceived(const QJsonObject& state) {
     fromJson(state);
 }
@@ -682,4 +625,10 @@ void GameWindow::fromJson(const QJsonObject& obj) {
     m_isMyTurn = obj["isMyTurn"].toBool();
     updateDisplay();
     checkWin();
+}
+
+void GameWindow::onServerSendGameState() {
+    if (m_gameType == NetworkDialog::NetworkServer && m_networkManager) {
+        m_networkManager->sendGameState(toJson());
+    }
 }
