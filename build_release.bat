@@ -71,9 +71,16 @@ echo.
 :: Step 5: Create installer packages
 echo [5/6] Creating installer packages...
 cd build
-cpack
+cpack -G ZIP
 if errorlevel 1 (
-    echo [ERROR] Package creation failed
+    echo [ERROR] ZIP package creation failed
+    cd ..
+    pause
+    exit /b 1
+)
+cpack -G NSIS
+if errorlevel 1 (
+    echo [ERROR] NSIS installer creation failed
     cd ..
     pause
     exit /b 1

@@ -72,7 +72,7 @@ chopsticks-qt_autogen/timestamp: C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 chopsticks-qt_autogen/timestamp: C:/Qt/5.15.2/mingw81_64/bin/uic.exe
 chopsticks-qt_autogen/timestamp: CMakeFiles/chopsticks-qt_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target chopsticks-qt"
-	"C:/Program Files/CMake/bin/cmake.exe" -E cmake_autogen C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir/AutogenInfo.json Release
+	"C:/Program Files/CMake/bin/cmake.exe" -E cmake_autogen C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir/AutogenInfo.json Debug
 	"C:/Program Files/CMake/bin/cmake.exe" -E touch C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/timestamp
 
 CMakeFiles/chopsticks-qt_autogen.dir/codegen:

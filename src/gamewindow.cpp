@@ -286,12 +286,13 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
 {
     Player* myPlayer = currentPlayer;
     Player* opponent = (currentPlayer == player1) ? player2 : player1;
-
+    bool moveMade = false;
+    int fromHand = selectedMyHand;
+    int toHand = handIndex;
     // If tapping own hand (for split/revive or advanced split)
     if ((isPlayer1Hand && currentPlayer == player1) || (!isPlayer1Hand && currentPlayer == player2)) {
         int h1 = myPlayer->getHand(selectedMyHand);
         int h2 = myPlayer->getHand(handIndex);
-
         // Standard revive/split: tap dead hand with live hand > 1
         if (h2 == 0 && h1 > 1) {
             int total = h1;
@@ -299,84 +300,49 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
             int remain = total - give;
             myPlayer->setHand(handIndex, give);
             myPlayer->setHand(selectedMyHand, remain);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed split: %2 fingers → %3 + %4")
-                        .arg(playerName).arg(total).arg(remain).arg(give);
-            instructionsLabel->setText(QString("Split performed! (%1 → %2 + %3)").arg(total).arg(remain).arg(give));
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (3,1) or (1,3) -> (2,2)
         else if ((h1 == 3 && h2 == 1) || (h1 == 1 && h2 == 3)) {
             myPlayer->setHand(selectedMyHand, 2);
             myPlayer->setHand(handIndex, 2);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (2,2)")
-                        .arg(playerName).arg(h1).arg(h2);
-            instructionsLabel->setText("Advanced split performed! (2,2)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (4,1) or (1,4) -> (3,2) or (2,3)
         else if ((h1 == 4 && h2 == 1) || (h1 == 1 && h2 == 4)) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 2);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (3,2)")
-                        .arg(playerName).arg(h1).arg(h2);
-            instructionsLabel->setText("Advanced split performed! (3,2)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (2,2) -> (3,1) or (1,3)
         else if (h1 == 2 && h2 == 2) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 1);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (2,2) → (3,1)")
-                        .arg(playerName);
-            instructionsLabel->setText("Advanced split performed! (3,1)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (2,3) or (3,2) -> (4,1) or (1,4)
         else if ((h1 == 2 && h2 == 3) || (h1 == 3 && h2 == 2)) {
             myPlayer->setHand(selectedMyHand, 4);
             myPlayer->setHand(handIndex, 1);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (4,1)")
-                        .arg(playerName).arg(h1).arg(h2);
-            instructionsLabel->setText("Advanced split performed! (4,1)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (2,4) or (4,2) -> (3,3)
         else if ((h1 == 2 && h2 == 4) || (h1 == 4 && h2 == 2)) {
             myPlayer->setHand(selectedMyHand, 3);
             myPlayer->setHand(handIndex, 3);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (%2,%3) → (3,3)")
-                        .arg(playerName).arg(h1).arg(h2);
-            instructionsLabel->setText("Advanced split performed! (3,3)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         // (3,3) -> (4,2) or (2,4)
         else if (h1 == 3 && h2 == 3) {
             myPlayer->setHand(selectedMyHand, 4);
             myPlayer->setHand(handIndex, 2);
-            
-            QString playerName = (currentPlayer == player1) ? 
-                (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-            qDebug() << QString("🔄 [Game Action] %1 performed advanced split: (3,3) → (4,2)")
-                        .arg(playerName);
-            instructionsLabel->setText("Advanced split performed! (4,2)");
+            moveMade = true;
             currentPlayer = opponent;
         }
         else {
@@ -389,34 +355,22 @@ void GameWindow::selectOpponentHand(int handIndex, bool isPlayer1Hand)
             instructionsLabel->setText("Cannot tap a dead hand. Choose another.");
             return;
         }
-        
-        QString attackerName = (currentPlayer == player1) ? 
-            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : "Player 2";
-        QString defenderName = (opponent == player1) ? 
-            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "You" : "Player 1") : 
-            (m_gameType == NetworkDialog::SinglePlayerVsAI ? "AI" : "Player 2");
-        QString attackerHand = (selectedMyHand == 0) ? "Left" : "Right";
-        QString defenderHand = (handIndex == 0) ? "Left" : "Right";
-        
-        qDebug() << QString("🎯 [Game Action] %1 attacks: %2's %3 hand (%4 fingers) → %5's %6 hand (%7 fingers)")
-                    .arg(attackerName)
-                    .arg(attackerName, attackerHand)
-                    .arg(currentPlayer->getHand(selectedMyHand))
-                    .arg(defenderName, defenderHand)
-                    .arg(opponent->getHand(handIndex));
-        
         currentPlayer->tap(*opponent, selectedMyHand, handIndex);
-        instructionsLabel->setText(QString("%1 tapped %2's %3 hand!").arg(attackerName, defenderName, defenderHand));
+        moveMade = true;
         currentPlayer = opponent;
     }
-
     selectedMyHand = -1;
     updateDisplay();
     checkWin();
-    
-    // Trigger AI move if it's AI's turn and game hasn't ended
+    // --- NETWORK MULTIPLAYER ---
+    if (moveMade && (m_gameType == NetworkDialog::NetworkServer || m_gameType == NetworkDialog::NetworkClient) && m_networkManager && m_isMyTurn) {
+        m_networkManager->sendGameMove(fromHand, toHand, m_localPlayerId);
+        m_isMyTurn = false;
+        updateDisplay();
+    }
+    // --- END NETWORK ---
     if (m_gameType == NetworkDialog::SinglePlayerVsAI) {
-        QTimer::singleShot(1500, this, &GameWindow::triggerAIMove); // 1.5 second delay for natural feel
+        QTimer::singleShot(1500, this, &GameWindow::triggerAIMove);
     }
 }
 
@@ -633,26 +587,50 @@ void GameWindow::triggerAIMove()
 
 void GameWindow::onNetworkMoveReceived(int fromHand, int toHand, int playerId)
 {
-    // Only apply move if it's not our turn
-    if (playerId == m_localPlayerId) return;
-    Player* myPlayer = (m_localPlayerId == 1) ? player1 : player2;
-    Player* opponent = (m_localPlayerId == 1) ? player2 : player1;
-    Player* current = (playerId == 1) ? player1 : player2;
-    Player* opp = (playerId == 1) ? player2 : player1;
-    currentPlayer = current;
+    if (playerId == m_localPlayerId) return; // Ignore our own moves
+    Player* remotePlayer = (playerId == 1) ? player1 : player2;
+    Player* remoteOpponent = (playerId == 1) ? player2 : player1;
+    currentPlayer = remotePlayer;
     selectedMyHand = fromHand;
-    // Simulate the move as if the remote player made it
-    if ((current == player1 && fromHand < 2 && toHand < 2 && toHand == fromHand) ||
-        (current == player2 && fromHand < 2 && toHand < 2 && toHand == fromHand)) {
+    // Simulate the move
+    if ((remotePlayer == player1 && fromHand < 2 && toHand < 2 && toHand == fromHand) ||
+        (remotePlayer == player2 && fromHand < 2 && toHand < 2 && toHand == fromHand)) {
         // Split or revive
-        selectOpponentHand(toHand, playerId == 1);
+        int h1 = remotePlayer->getHand(fromHand);
+        int h2 = remotePlayer->getHand(toHand);
+        // Use same split logic as selectOpponentHand
+        if (h2 == 0 && h1 > 1) {
+            int total = h1;
+            int give = total / 2;
+            int remain = total - give;
+            remotePlayer->setHand(toHand, give);
+            remotePlayer->setHand(fromHand, remain);
+        } else if ((h1 == 3 && h2 == 1) || (h1 == 1 && h2 == 3)) {
+            remotePlayer->setHand(fromHand, 2);
+            remotePlayer->setHand(toHand, 2);
+        } else if ((h1 == 4 && h2 == 1) || (h1 == 1 && h2 == 4)) {
+            remotePlayer->setHand(fromHand, 3);
+            remotePlayer->setHand(toHand, 2);
+        } else if (h1 == 2 && h2 == 2) {
+            remotePlayer->setHand(fromHand, 3);
+            remotePlayer->setHand(toHand, 1);
+        } else if ((h1 == 2 && h2 == 3) || (h1 == 3 && h2 == 2)) {
+            remotePlayer->setHand(fromHand, 4);
+            remotePlayer->setHand(toHand, 1);
+        } else if ((h1 == 2 && h2 == 4) || (h1 == 4 && h2 == 2)) {
+            remotePlayer->setHand(fromHand, 3);
+            remotePlayer->setHand(toHand, 3);
+        } else if (h1 == 3 && h2 == 3) {
+            remotePlayer->setHand(fromHand, 4);
+            remotePlayer->setHand(toHand, 2);
+        }
     } else {
         // Normal tap
-        current->tap(*opp, fromHand, toHand);
-        currentPlayer = opp;
-        selectedMyHand = -1;
-        updateDisplay();
-        checkWin();
+        remotePlayer->tap(*remoteOpponent, fromHand, toHand);
     }
+    currentPlayer = remoteOpponent;
+    selectedMyHand = -1;
     m_isMyTurn = true;
+    updateDisplay();
+    checkWin();
 }

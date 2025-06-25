@@ -73,7 +73,7 @@ chopsticks-qt_autogen/timestamp: C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 chopsticks-qt_autogen/timestamp: C:/Qt/5.15.2/mingw81_64/bin/uic.exe
 chopsticks-qt_autogen/timestamp: CMakeFiles/chopsticks-qt.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target chopsticks-qt"
-	"C:/Program Files/CMake/bin/cmake.exe" -E cmake_autogen C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir/AutogenInfo.json Release
+	"C:/Program Files/CMake/bin/cmake.exe" -E cmake_autogen C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles/chopsticks-qt_autogen.dir/AutogenInfo.json Debug
 	"C:/Program Files/CMake/bin/cmake.exe" -E touch C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/chopsticks-qt_autogen/timestamp
 
 CMakeFiles/chopsticks-qt.dir/codegen:
@@ -221,7 +221,7 @@ chopsticks-qt.exe: CMakeFiles/chopsticks-qt.dir/objects1.rsp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable chopsticks-qt.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/chopsticks-qt.dir/objects.a
 	C:/msys64/mingw64/bin/ar.exe qc CMakeFiles/chopsticks-qt.dir/objects.a @CMakeFiles/chopsticks-qt.dir/objects1.rsp
-	C:/msys64/mingw64/bin/c++.exe -O3 -DNDEBUG -Wl,--whole-archive CMakeFiles/chopsticks-qt.dir/objects.a -Wl,--no-whole-archive -o chopsticks-qt.exe -Wl,--out-implib,libchopsticks-qt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/chopsticks-qt.dir/linkLibs.rsp
+	C:/msys64/mingw64/bin/c++.exe -g -Wl,--whole-archive CMakeFiles/chopsticks-qt.dir/objects.a -Wl,--no-whole-archive -o chopsticks-qt.exe -Wl,--out-implib,libchopsticks-qt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/chopsticks-qt.dir/linkLibs.rsp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying Qt5 (including Network), MinGW runtime DLLs and platform plugins to build directory"
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Core.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
 	"C:/Program Files/CMake/bin/cmake.exe" -E copy_if_different C:/Qt/5.15.2/mingw81_64/bin/Qt5Gui.dll C:/Users/user/Documents/cpp_projects/chopsticks-qt_Win10/build
